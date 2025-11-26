@@ -1,3 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">to do list</string>
+    <string name="app_name">ToDoList</string>
+    <string name="login">Login</string>
+    <string name="register">Daftar</string>
+    <string name="home">Beranda</string>
+    <string name="favorite">Favorit</string>
+    <string name="profile">Profil</string>
+    <string name="settings">Pengaturan</string>
 </resources>

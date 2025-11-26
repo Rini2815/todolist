@@ -1,28 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="24dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/etTitle"
-        android:hint="Edit Judul"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/etDescription"
-        android:hint="Edit Deskripsi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minLines="3" />
+        <!-- Tombol Kembali -->
+        <ImageView
+            android:id="@+id/backButton"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginBottom="16dp" />
 
-    <Button
-        android:id="@+id/btnUpdateTask"
-        android:text="Update Task"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp" />
+        <EditText
+            android:id="@+id/etTitle"
+            android:hint="Edit Judul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/etDescription"
+            android:hint="Edit Deskripsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minLines="3"
+            android:layout_marginTop="12dp" />
+
+        <EditText
+            android:id="@+id/etDate"
+            android:hint="Pilih Tanggal"
+            android:focusable="false"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" />
+
+        <EditText
+            android:id="@+id/etTime"
+            android:hint="Pilih Waktu"
+            android:focusable="false"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" />
+
+        <Button
+            android:id="@+id/btnUpdateTask"
+            android:text="Update Task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+
+</ScrollView>

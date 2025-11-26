@@ -9,18 +9,62 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Tombol Kembali -->
+        <ImageView
+            android:id="@+id/backButton"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Judul -->
         <TextView
-            android:id="@+id/tvTitle"
+            android:id="@+id/detailTitle"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginBottom="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
+        <!-- Deskripsi -->
         <TextView
-            android:id="@+id/tvDescription"
+            android:id="@+id/detailDesc"
             android:textSize="18sp"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Tanggal -->
+        <TextView
+            android:id="@+id/detailDate"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Waktu -->
+        <TextView
+            android:id="@+id/detailTime"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Tombol Edit -->
+        <Button
+            android:id="@+id/editTaskBtn"
+            android:text="Edit Task"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Tombol Delete -->
+        <Button
+            android:id="@+id/deleteTaskBtn"
+            android:text="Hapus Task"
+            android:background="#FF4444"
+            android:textColor="#FFFFFF"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </LinearLayout>

@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("kotlin-kapt")   // UNTUK ROOM
+    id("kotlin-kapt")
 }
 
 android {
@@ -36,26 +36,26 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    // 🔥 Yang wajib ditambahkan
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
-    // Navigation (wajib untuk BottomNav Fragment)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 
-    // ROOM
     implementation("androidx.room:room-runtime:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
 
-    // AppCompat untuk Theme & FragmentActivity
     implementation("androidx.appcompat:appcompat:1.7.0")
 
-    // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

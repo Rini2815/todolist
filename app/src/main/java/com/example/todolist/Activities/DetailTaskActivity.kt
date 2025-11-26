@@ -3,39 +3,49 @@ package com.example.todolist.Activities
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.todolist.R
+import com.example.todolist.databinding.ActivityDetailTaskBinding
 import com.example.todolist.model.TaskRepository
-import kotlinx.android.synthetic.main.activity_detail_task.*
 
 class DetailTaskActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityDetailTaskBinding
     private var taskId = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_task)
 
+        // 🔥 Inisialisasi ViewBinding
+        binding = ActivityDetailTaskBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // Ambil ID Task dari Intent
         taskId = intent.getIntExtra("TASK_ID", -1)
         val task = TaskRepository.getTaskById(taskId)
 
+        // Tampilkan data
         if (task != null) {
-            detailTitle.text = task.title
-            detailDesc.text = task.description
-            detailDate.text = task.date
-            detailTime.text = task.time
+            binding.detailTitle.text = task.title
+            binding.detailDesc.text = task.description
+            binding.detailDate.text = task.date
+            binding.detailTime.text = task.time
         }
 
-        editTaskBtn.setOnClickListener {
+        // Tombol Edit
+        binding.editTaskBtn.setOnClickListener {
             val intent = Intent(this, EditTaskActivity::class.java)
             intent.putExtra("TASK_ID", taskId)
             startActivity(intent)
         }
 
-        deleteTaskBtn.setOnClickListener {
+        // Tombol Delete
+        binding.deleteTaskBtn.setOnClickListener {
             TaskRepository.deleteTask(taskId)
             finish()
         }
 
-        backButton.setOnClickListener { finish() }
+        // Tombol Back
+        binding.backButton.setOnClickListener {
+            finish()
+        }
     }
 }

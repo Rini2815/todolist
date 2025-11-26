@@ -1,4 +1,4 @@
-package com.example.todolist.activities   // sudah diperbaiki, huruf kecil
+package com.example.todolist.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,8 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.todolist.databinding.ActivityLoginBinding
 import com.example.todolist.utils.PreferenceManager
-import com.example.todolist.MainActivity       // tambahkan ini
-import com.example.todolist.activities.RegisterActivity   // tambahkan ini
+import com.example.todolist.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -21,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
 
         pref = PreferenceManager(this)
 
-        // Jika user sudah login, langsung ke Home
+        // Jika sudah login, langsung masuk
         if (pref.isLoggedIn()) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
@@ -32,14 +31,14 @@ class LoginActivity : AppCompatActivity() {
             loginUser()
         }
 
-        binding.txtRegister.setOnClickListener {
+        binding.tvRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 
     private fun loginUser() {
-        val email = binding.edtEmail.text.toString().trim()
-        val password = binding.edtPassword.text.toString().trim()
+        val email = binding.etEmail.text.toString().trim()
+        val password = binding.etPassword.text.toString().trim()
 
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Email dan password tidak boleh kosong", Toast.LENGTH_SHORT).show()

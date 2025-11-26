@@ -1,7 +1,9 @@
-package com.example.todolist.Activities
+package com.example.todolist.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.todolist.R
 
@@ -10,8 +12,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        // Delay 2 detik → masuk ke Login
-        window.decorView.postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }, 2000)

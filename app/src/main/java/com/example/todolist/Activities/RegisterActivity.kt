@@ -1,34 +1,49 @@
-package com.example.todolist.Activities
+package com.example.todolist.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.todolist.R
-import kotlinx.android.synthetic.main.activity_register.*
+import com.example.todolist.databinding.ActivityRegisterBinding
+import com.example.todolist.utils.PreferenceManager
 
 class RegisterActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityRegisterBinding
+    private lateinit var pref: PreferenceManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
 
-        registerBtn.setOnClickListener {
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-            if (regName.text.isNotEmpty() &&
-                regEmail.text.isNotEmpty() &&
-                regPassword.text.isNotEmpty()
-            ) {
-                Toast.makeText(this, "Registrasi berhasil", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
-            } else {
-                Toast.makeText(this, "Semua kolom wajib diisi", Toast.LENGTH_SHORT).show()
-            }
+        pref = PreferenceManager(this)
+
+        binding.btnRegister.setOnClickListener {
+            registerUser()
+        }
+    }
+
+    private fun registerUser() {
+        val name = binding.etName.text.toString().trim()
+        val email = binding.etEmail.text.toString().trim()
+        val password = binding.etPassword.text.toString().trim()
+
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Semua kolom wajib diisi", Toast.LENGTH_SHORT).show()
+            return
         }
 
-        goLogin.setOnClickListener {
-            finish()
-        }
+        // Simpan ke SharedPreferences
+        pref.setName(name)
+        pref.setEmail(email)
+        pref.setPassword(password)
+
+        Toast.makeText(this, "Registrasi berhasil!", Toast.LENGTH_SHORT).show()
+
+        // Pindah ke Login
+        startActivity(Intent(this, LoginActivity::class.java))
+        finish()
     }
 }

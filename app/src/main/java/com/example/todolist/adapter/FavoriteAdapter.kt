@@ -30,23 +30,31 @@ class FavoriteAdapter(
         holder.binding.txtTitle.text = item.title
         holder.binding.txtDate.text = item.date
 
-        // masuk detail tugas
+        // klik card → buka detail
         holder.itemView.setOnClickListener {
             onClick(item)
         }
 
-        // hapus dari favorit
+        // klik icon un-fav
         holder.binding.btnUnfav.setOnClickListener {
-            item.isFavorite = false
-            notifyItemChanged(position)
-            onUnfavorite(item)
+
+            // hapus dari favorite list adapter
+            val removedItem = list[position]
+            removedItem.isFavorite = false
+
+            onUnfavorite(removedItem)
+
+            list.removeAt(position)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position, list.size)
         }
     }
 
     override fun getItemCount(): Int = list.size
 
     fun updateData(newList: MutableList<Task>) {
-        list = newList
+        list.clear()
+        list.addAll(newList)
         notifyDataSetChanged()
     }
 }

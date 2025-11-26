@@ -3,6 +3,7 @@ package com.example.todolist.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.todolist.R
 import com.example.todolist.databinding.ItemTaskBinding
 import com.example.todolist.model.Task
 
@@ -27,30 +28,29 @@ class TaskAdapter(
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         val item = list[position]
 
-        holder.binding.txtTitle.text = item.title
-        holder.binding.txtDate.text = item.date
-        holder.binding.txtCategory.text = item.category
+        holder.binding.apply {
+            txtTitle.text = item.title
+            txtDate.text = item.date
+            txtCategory.text = item.category
 
-        // klik masuk ke halaman detail
-        holder.itemView.setOnClickListener {
-            onClick(item)
+            // Klik item → ke detail
+            root.setOnClickListener { onClick(item) }
+
+            // Klik favorit
+            btnFavorite.setOnClickListener {
+                item.isFavorite = !item.isFavorite
+                notifyItemChanged(position)
+                onFavorite(item)
+            }
+
+            // Icon favorit
+            val iconRes = if (item.isFavorite)
+                R.drawable.outline_ac_unit_24
+            else
+                R.drawable.outline_ac_unit_24
+
+            btnFavorite.setImageResource(iconRes)
         }
-
-        // tombol favorit
-        holder.binding.btnFavorite.setOnClickListener {
-            item.isFavorite = !item.isFavorite
-            notifyItemChanged(position)
-            onFavorite(item)
-        }
-
-        // icon favorit
-        val icon = if (item.isFavorite) {
-            com.example.todolist.R.drawable.ic_favorite_filled
-        } else {
-            com.example.todolist.R.drawable.ic_favorite_border
-        }
-
-        holder.binding.btnFavorite.setImageResource(icon)
     }
 
     override fun getItemCount(): Int = list.size

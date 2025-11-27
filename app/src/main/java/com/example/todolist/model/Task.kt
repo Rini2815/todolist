@@ -6,6 +6,9 @@ data class Task(
     var description: String,
     var date: String,
     var time: String,
+    var category: String,
     var isFavorite: Boolean = false,
     var isCompleted: Boolean = false
+)
+
 )

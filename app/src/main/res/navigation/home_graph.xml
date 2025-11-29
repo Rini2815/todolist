@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/home_graph">
+    android:id="@+id/home_graph"
+    app:startDestination="@id/homeFragment">
+
+    <!-- HOME -->
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.todolist.fragments.HomeFragment"
+        android:label="Home" />
+
+    <!-- FAVORITE -->
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.todolist.fragments.FavoriteFragment"
+        android:label="Favorite" />
+
+    <!-- PROFILE -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.todolist.fragments.ProfileFragment"
+        android:label="Profile">
+
+        <!-- → Masuk ke Pengaturan -->
+        <action
+            android:id="@+id/action_profile_to_pengaturan"
+            app:destination="@id/pengaturanFragment" />
+
+    </fragment>
+
+    <!-- MENU / PENGATURAN -->
+    <fragment
+        android:id="@+id/pengaturanFragment"
+        android:name="com.example.todolist.fragments.PengaturanFragment"
+        android:label="Pengaturan">
+
+        <!-- → Theme -->
+        <action
+            android:id="@+id/action_pengaturan_to_theme"
+            app:destination="@id/themeFragment" />
+
+        <!-- → Privacy -->
+        <action
+            android:id="@+id/action_pengaturan_to_privacy"
+            app:destination="@id/privacyFragment" />
+
+        <!-- → About -->
+        <action
+            android:id="@+id/action_pengaturan_to_about"
+            app:destination="@id/aboutFragment" />
+
+    </fragment>
+
+    <!-- THEME -->
+    <fragment
+        android:id="@+id/themeFragment"
+        android:name="com.example.todolist.fragments.ThemeFragment"
+        android:label="Theme" />
+
+    <!-- PRIVACY -->
+    <fragment
+        android:id="@+id/privacyFragment"
+        android:name="com.example.todolist.fragments.PrivacyFragment"
+        android:label="Privacy" />
+
+    <!-- ABOUT -->
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.todolist.fragments.AboutFragment"
+        android:label="About" />
 
 </navigation>

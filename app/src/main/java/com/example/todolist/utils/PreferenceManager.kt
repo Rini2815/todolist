@@ -1,44 +1,44 @@
 package com.example.todolist.utils
 
 import android.content.Context
+import android.net.Uri
 
 class PreferenceManager(context: Context) {
 
-    private val pref = context.getSharedPreferences("USER_PREF", Context.MODE_PRIVATE)
+    private val pref = context.getSharedPreferences("todolist_pref", Context.MODE_PRIVATE)
 
-    fun setName(name: String) {
-        pref.edit().putString("NAME", name).apply()
+    fun setLogin(status: Boolean) {
+        pref.edit().putBoolean("isLogin", status).apply()
     }
 
-    fun getName(): String? {
-        return pref.getString("NAME", "")
+    fun isLogin(): Boolean {
+        return pref.getBoolean("isLogin", false)
     }
 
-    fun setEmail(email: String) {
-        pref.edit().putString("EMAIL", email).apply()
+    fun setUsername(name: String) {
+        pref.edit().putString("username", name).apply()
     }
 
-    fun getEmail(): String? {
-        return pref.getString("EMAIL", "")
+    fun getUsername(): String {
+        return pref.getString("username", "User") ?: "User"
     }
 
-    fun setPassword(password: String) {
-        pref.edit().putString("PASSWORD", password).apply()
+    // Foto profil (URI string)
+    fun setProfileImage(uri: Uri?) {
+        pref.edit().putString("profile_image", uri?.toString()).apply()
     }
 
-    fun getPassword(): String? {
-        return pref.getString("PASSWORD", "")
+    fun getProfileImage(): Uri? {
+        val str = pref.getString("profile_image", null)
+        return if (str != null) Uri.parse(str) else null
     }
 
-    fun setLoggedIn(status: Boolean) {
-        pref.edit().putBoolean("LOGGED_IN", status).apply()
+    // Theme (Light/Dark)
+    fun setTheme(mode: String) {
+        pref.edit().putString("theme_mode", mode).apply()
     }
 
-    fun isLoggedIn(): Boolean {
-        return pref.getBoolean("LOGGED_IN", false)
-    }
-
-    fun clear() {
-        pref.edit().clear().apply()
+    fun getTheme(): String {
+        return pref.getString("theme_mode", "light") ?: "light"
     }
 }

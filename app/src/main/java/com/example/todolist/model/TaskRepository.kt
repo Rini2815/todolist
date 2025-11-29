@@ -4,28 +4,49 @@ object TaskRepository {
 
     private val taskList = mutableListOf<Task>()
 
-    fun getAllTasks(): List<Task> = taskList
-
+    // Tambah task
     fun addTask(task: Task) {
         taskList.add(task)
     }
 
-    fun updateTask(updatedTask: Task) {
-        val index = taskList.indexOfFirst { it.id == updatedTask.id }
-        if (index != -1) {
-            taskList[index] = updatedTask
-        }
+    // Ambil semua task
+    fun getAllTasks(): MutableList<Task> {
+        return taskList
     }
 
-    fun deleteTask(taskId: Int) {
-        taskList.removeAll { it.id == taskId }
-    }
-
-    fun getTaskById(id: Int): Task? {
+    // Ambil task berdasarkan ID
+    fun getTaskById(id: String): Task? {
         return taskList.find { it.id == id }
     }
 
-    fun getFavoriteTasks(): List<Task> {
-        return taskList.filter { it.isFavorite }
+    // Update task
+    fun updateTask(updated: Task) {
+        val index = taskList.indexOfFirst { it.id == updated.id }
+        if (index != -1) {
+            taskList[index] = updated
+        }
+    }
+
+    // Hapus task
+    fun deleteTask(id: String) {
+        val index = taskList.indexOfFirst { it.id == id }
+        if (index != -1) taskList.removeAt(index)
+    }
+
+    // Favorite/unfavorite
+    fun setFavorite(id: String, state: Boolean) {
+        val task = getTaskById(id)
+        task?.isFavorite = state
+    }
+
+    // Ambil yang difavoritkan
+    fun getFavorites(): MutableList<Task> {
+        return taskList.filter { it.isFavorite }.toMutableList()
+    }
+
+    // Set status selesai / belum
+    fun setDone(id: String, state: Boolean) {
+        val task = getTaskById(id)
+        task?.isDone = state
     }
 }

@@ -1,60 +1,48 @@
 package com.example.todolist.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.todolist.databinding.ItemTaskFavoriteBinding
+import com.example.todolist.R
 import com.example.todolist.model.Task
 
 class FavoriteAdapter(
-    private var list: MutableList<Task>,
+    private val list: MutableList<Task>,
     private val onClick: (Task) -> Unit,
     private val onUnfavorite: (Task) -> Unit
-) : RecyclerView.Adapter<FavoriteAdapter.FavViewHolder>() {
+) : RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
 
-    inner class FavViewHolder(val binding: ItemTaskFavoriteBinding) :
-        RecyclerView.ViewHolder(binding.root)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavViewHolder {
-        val binding = ItemTaskFavoriteBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
-        return FavViewHolder(binding)
+    inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+        val tvTitle: TextView = v.findViewById(R.id.tvFavTitle)
+        val tvDesc: TextView = v.findViewById(R.id.tvFavDesc)
+        val btnUnfav: ImageButton = v.findViewById(R.id.btnUnfav)
     }
 
-    override fun onBindViewHolder(holder: FavViewHolder, position: Int) {
-        val item = list[position]
-
-        holder.binding.txtTitle.text = item.title
-        holder.binding.txtDate.text = item.date
-
-        // klik card → buka detail
-        holder.itemView.setOnClickListener {
-            onClick(item)
-        }
-
-        // klik icon un-fav
-        holder.binding.btnUnfav.setOnClickListener {
-
-            // hapus dari favorite list adapter
-            val removedItem = list[position]
-            removedItem.isFavorite = false
-
-            onUnfavorite(removedItem)
-
-            list.removeAt(position)
-            notifyItemRemoved(position)
-            notifyItemRangeChanged(position, list.size)
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val v = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_favorite, parent, false)
+        return ViewHolder(v)
     }
 
     override fun getItemCount(): Int = list.size
 
-    fun updateData(newList: MutableList<Task>) {
-        list.clear()
-        list.addAll(newList)
-        notifyDataSetChanged()
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = list[position]
+
+        holder.tvTitle.text = item.title
+        holder.tvDesc.text = item.description
+
+        // klik card → buka detail tugas
+        holder.itemView.setOnClickListener {
+            onClick(item)
+        }
+
+        // unfavorite
+        holder.btnUnfav.setOnClickListener {
+            onUnfavorite(item)
+        }
     }
 }

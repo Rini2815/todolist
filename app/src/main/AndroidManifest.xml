@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.todolist">
-
-    <!-- Permission Notifikasi Android 13+ -->
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
@@ -14,60 +9,42 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ToDoList">
 
-        <!-- Receiver untuk alarm tugas -->
-        <receiver
-            android:name=".utils.TaskAlarmReceiver"
-            android:exported="false" />
-
-        <!-- Splash -->
+        <!-- Splash: pertama kali dibuka -->
         <activity
-            android:name=".Activities.SplashActivity"
+            android:name=".activities.SplashActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
         <!-- Login -->
-        <activity
-            android:name=".Activities.LoginActivity"
-            android:exported="true" />
+        <activity android:name=".activities.LoginActivity"/>
 
         <!-- Register -->
-        <activity
-            android:name=".Activities.RegisterActivity"
-            android:exported="true" />
+        <activity android:name=".activities.RegisterActivity"/>
 
-        <!-- Home -->
-        <activity
-            android:name=".Activities.HomeActivity"
-            android:exported="true" />
-
-        <!-- Tambah Tugas -->
-        <activity
-            android:name=".Activities.AddTaskActivity"
-            android:exported="false" />
-
-        <!-- Edit Tugas -->
-        <activity
-            android:name=".Activities.EditTaskActivity"
-            android:exported="false" />
-
-        <!-- Detail Tugas -->
-        <activity
-            android:name=".Activities.DetailTaskActivity"
-            android:exported="false" />
+        <!-- Beranda -->
+        <activity android:name=".activities.HomeActivity"/>
 
         <!-- Settings -->
-        <activity
-            android:name=".Activities.SettingsActivity"
-            android:exported="false" />
+        <activity android:name=".activities.SettingsActivity"/>
 
-        <!-- Bottom Navigation (Main) -->
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+        <!-- Tambah Tugas -->
+        <activity android:name=".activities.AddTaskActivity"/>
+
+        <!-- Edit Tugas -->
+        <activity android:name=".activities.EditTaskActivity"/>
+
+        <!-- Detail Tugas -->
+        <activity android:name=".activities.DetailTaskActivity"/>
+
+        <!-- Host Fragment -->
+        <activity android:name=".MainActivity"/>
+
+        <!-- Notifikasi Alarm -->
+        <receiver android:name=".utils.TaskAlarmReceiver" />
 
     </application>
 

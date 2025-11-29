@@ -1,14 +1,10 @@
 package com.example.todolist.model
 
 data class Task(
-    val id: Int,
+    val id: String,
     var title: String,
     var description: String,
-    var date: String,
     var time: String,
-    var category: String,
-    var isFavorite: Boolean = false,
-    var isCompleted: Boolean = false
-)
-
+    var isDone: Boolean = false,
+    var isFavorite: Boolean = false
 )

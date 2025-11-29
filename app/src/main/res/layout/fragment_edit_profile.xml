@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="16dp"
+    android:padding="24dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,17 +11,24 @@
 
         <EditText
             android:id="@+id/etName"
-            android:hint="Nama Baru"
+            android:hint="Name"
+            android:padding="14dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:hint="Email"
+            android:padding="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <Button
             android:id="@+id/btnSaveProfile"
-            android:text="Simpan"
+            android:text="Save"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp" />
-
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </ScrollView>

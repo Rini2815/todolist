@@ -7,30 +7,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.todolist.activities.AddTaskActivity
+import com.example.todolist.activities.DetailTaskActivity
+import com.example.todolist.adapter.TaskAdapter
 import com.example.todolist.databinding.FragmentHomeBinding
-import com.example.todolist.model.Task
-import com.example.todolist.ui.AddTaskActivity
-import com.example.todolist.ui.DetailTaskActivity
+import com.example.todolist.model.TaskRepository
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var taskAdapter: TaskAdapter
-    private var taskList = mutableListOf<Task>()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        // Dummy data
-        taskList = mutableListOf(
-            Task("Belajar Kotlin", "22 Nov 2025", "Kuliah", false),
-            Task("Meeting Client", "23 Nov 2025", "Kerja", true)
-        )
+        setupRecyclerView()
 
-        setupRecycler()
         binding.btnAddTask.setOnClickListener {
             startActivity(Intent(requireContext(), AddTaskActivity::class.java))
         }
@@ -38,21 +32,21 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    private fun setupRecycler() {
-        taskAdapter = TaskAdapter(taskList,
-            onClick = { item ->
-                val i = Intent(requireContext(), DetailTaskActivity::class.java)
-                i.putExtra("DATA", item)
-                startActivity(i)
-            },
-            onFavorite = { item ->
-                item.isFavorite = !item.isFavorite
-            }
-        )
+    private fun setupRecyclerView() {
+        taskAdapter = TaskAdapter(TaskRepository.taskList) { task ->
+            val intent = Intent(requireContext(), DetailTaskActivity::class.java)
+            intent.putExtra("taskId", task.id)
+            startActivity(intent)
+        }
 
-        binding.rvTask.apply {
+        binding.rvTodayTasks.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = taskAdapter
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        taskAdapter.notifyDataSetChanged()
     }
 }

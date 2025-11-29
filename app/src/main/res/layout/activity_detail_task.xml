@@ -1,71 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="24dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:orientation="vertical">
 
-        <!-- Tombol Kembali -->
-        <ImageView
-            android:id="@+id/backButton"
-            android:src="@android:drawable/ic_menu_close_clear_cancel"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Judul -->
         <TextView
-            android:id="@+id/detailTitle"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <!-- Deskripsi -->
-        <TextView
-            android:id="@+id/detailDesc"
-            android:textSize="18sp"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvDetailTitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp" />
+            android:text="Task Title"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-        <!-- Tanggal -->
         <TextView
-            android:id="@+id/detailDate"
-            android:textSize="16sp"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvDetailDesc"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp" />
+            android:text="Task Description"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp" />
 
-        <!-- Waktu -->
         <TextView
-            android:id="@+id/detailTime"
-            android:textSize="16sp"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvDetailDate"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp" />
+            android:text="12 Jan 2025"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp" />
 
-        <!-- Tombol Edit -->
+        <TextView
+            android:id="@+id/tvDetailTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="08:00"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp" />
+
         <Button
-            android:id="@+id/editTaskBtn"
+            android:id="@+id/btnEditTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Edit Task"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp" />
-
-        <!-- Tombol Delete -->
-        <Button
-            android:id="@+id/deleteTaskBtn"
-            android:text="Hapus Task"
-            android:background="#FF4444"
-            android:textColor="#FFFFFF"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_marginTop="20dp" />
 
     </LinearLayout>
 

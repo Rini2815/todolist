@@ -2,18 +2,67 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="@color/white">
 
     <LinearLayout
         android:orientation="vertical"
+        android:padding="24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Foto Profil -->
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:src="@drawable/patrick"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_circle"
+            android:padding="8dp" />
+
+        <!-- Nama -->
         <TextView
-            android:text="Profil"
-            android:textSize="24sp"
+            android:id="@+id/tvUsername"
+            android:text="Patrick Star"
+            android:textSize="22sp"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp" />
+            android:textColor="@color/black"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- Email -->
+        <TextView
+            android:id="@+id/tvEmail"
+            android:text="patrick@example.com"
+            android:textSize="14sp"
+            android:textColor="@color/gray"
+            android:layout_marginTop="4dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- Tombol Edit Profile -->
+        <Button
+            android:id="@+id/btnEditProfile"
+            android:text="Edit Profil"
+            android:background="@drawable/bg_button_primary"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- Tombol Pengaturan -->
+        <Button
+            android:id="@+id/btnPengaturan"
+            android:text="Pengaturan"
+            android:background="@drawable/bg_input"
+            android:textColor="@color/black"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
+
 </ScrollView>

@@ -1,51 +1,79 @@
-package com.example.todolist.Activities
+package com.example.todolist.activities
 
 import android.content.Intent
+import android.graphics.Paint
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.example.todolist.R
 import com.example.todolist.databinding.ActivityDetailTaskBinding
-import com.example.todolist.model.TaskRepository
 
 class DetailTaskActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailTaskBinding
-    private var taskId = -1
+    private val subTasks = arrayListOf<String>()
+    private var isFavorite = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // 🔥 Inisialisasi ViewBinding
         binding = ActivityDetailTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Ambil ID Task dari Intent
-        taskId = intent.getIntExtra("TASK_ID", -1)
-        val task = TaskRepository.getTaskById(taskId)
+        binding.btnBack.setOnClickListener { finish() }
 
-        // Tampilkan data
-        if (task != null) {
-            binding.detailTitle.text = task.title
-            binding.detailDesc.text = task.description
-            binding.detailDate.text = task.date
-            binding.detailTime.text = task.time
+        binding.btnAddCard.setOnClickListener {
+            val text = binding.inputCard.text.toString()
+            if (text.isNotEmpty()) {
+                subTasks.add(text)
+                updateList()
+                binding.inputCard.setText("")
+            }
         }
+    }
 
-        // Tombol Edit
-        binding.editTaskBtn.setOnClickListener {
-            val intent = Intent(this, EditTaskActivity::class.java)
-            intent.putExtra("TASK_ID", taskId)
-            startActivity(intent)
-        }
+    private fun updateList() {
+        binding.listCard.removeAllViews()
 
-        // Tombol Delete
-        binding.deleteTaskBtn.setOnClickListener {
-            TaskRepository.deleteTask(taskId)
-            finish()
-        }
+        subTasks.forEach { t ->
+            val item = layoutInflater.inflate(R.layout.item_task, null)
 
-        // Tombol Back
-        binding.backButton.setOnClickListener {
-            finish()
+            val check = item.findViewById<android.widget.CheckBox>(R.id.checkboxTask)
+            val txt = item.findViewById<android.widget.TextView>(R.id.txtTask)
+
+            txt.text = t
+
+            check.setOnCheckedChangeListener { _, ch ->
+                txt.paintFlags = if (ch) {
+                    txt.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                } else {
+                    txt.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                }
+            }
+
+            binding.listCard.addView(item)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.button_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+
+            R.id.menu_share -> {
+                val send = Intent(Intent.ACTION_SEND)
+                send.type = "text/plain"
+                send.putExtra(Intent.EXTRA_TEXT, "Bagikan tugas")
+                startActivity(Intent.createChooser(send, "Share via"))
+            }
+
+            R.id.menu_favorite -> {
+                isFavorite = !isFavorite
+            }
+        }
+        return true
     }
 }

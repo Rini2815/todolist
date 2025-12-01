@@ -7,7 +7,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ToDoList">
+        android:theme="@style/Theme.MyApp">
 
         <!-- Splash: pertama kali dibuka -->
         <activity
@@ -20,31 +20,40 @@
         </activity>
 
         <!-- Login -->
-        <activity android:name=".activities.LoginActivity"/>
+        <activity android:name=".activities.LoginActivity"
+            android:exported="false"/>
 
         <!-- Register -->
-        <activity android:name=".activities.RegisterActivity"/>
+        <activity android:name=".activities.RegisterActivity"
+            android:exported="false"/>
 
         <!-- Beranda -->
-        <activity android:name=".activities.HomeActivity"/>
+        <activity android:name=".activities.HomeActivity"
+            android:exported="false"/>
 
         <!-- Settings -->
-        <activity android:name=".activities.SettingsActivity"/>
+        <activity android:name=".activities.SettingsActivity"
+            android:exported="false"/>
 
         <!-- Tambah Tugas -->
-        <activity android:name=".activities.AddTaskActivity"/>
+        <activity android:name=".activities.AddTaskActivity"
+            android:exported="false"/>
 
         <!-- Edit Tugas -->
-        <activity android:name=".activities.EditTaskActivity"/>
+        <activity android:name=".activities.EditTaskActivity"
+            android:exported="false"/>
 
         <!-- Detail Tugas -->
-        <activity android:name=".activities.DetailTaskActivity"/>
+        <activity android:name=".activities.DetailTaskActivity"
+            android:exported="false"/>
 
         <!-- Host Fragment -->
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity"
+            android:exported="false"/>
 
         <!-- Notifikasi Alarm -->
-        <receiver android:name=".utils.TaskAlarmReceiver" />
+        <receiver android:name=".utils.TaskAlarmReceiver"
+            android:exported="false"/>
 
     </application>
 

@@ -2,40 +2,65 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:elevation="4dp"
-    android:padding="12dp">
+    android:layout_margin="12dp"
+    android:radius="20dp"
+    android:elevation="6dp"
+    android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
+        <!-- Waktu -->
         <TextView
-            android:id="@+id/tvTaskTitle"
-            android:layout_width="match_parent"
+            android:id="@+id/tvTaskTime"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Task Title"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvTaskDesc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Description"
+            android:text="3:20 PM"
             android:textSize="14sp"
-            android:paddingTop="4dp" />
+            android:textStyle="bold"
+            android:textColor="#555" />
 
-        <TextView
-            android:id="@+id/tvTaskDate"
-            android:layout_width="match_parent"
+        <!-- Garis pemisah dikit -->
+        <View
+            android:layout_width="12dp"
+            android:layout_height="0dp" />
+
+        <!-- Judul + switch -->
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="12 Jan 2025, 08:00"
-            android:textSize="12sp"
-            android:paddingTop="4dp"
-            android:textColor="#666" />
+            android:layout_weight="1"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/tvTaskTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pemrograman Mobile"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#000" />
+
+            <Switch
+                android:id="@+id/switchDone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Selesai?"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp" />
+
+        </LinearLayout>
+
+        <!-- Tombol detail -->
+        <ImageView
+            android:id="@+id/btnDetailTask"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_arrow_right"
+            android:padding="4dp" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

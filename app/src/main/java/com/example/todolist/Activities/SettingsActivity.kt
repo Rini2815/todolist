@@ -15,19 +15,33 @@ class SettingsActivity : AppCompatActivity() {
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnBack.setOnClickListener { finish() }
+        setupListeners()
+    }
 
-        binding.btnLogout.setOnClickListener {
-            val p = AlertDialog.Builder(this)
-                .setMessage("Apakah Anda yakin ingin keluar?")
-                .setPositiveButton("Yes") { _, _ ->
-                    startActivity(Intent(this, LoginActivity::class.java))
-                    finishAffinity()
-                }
-                .setNegativeButton("No", null)
-                .create()
+    private fun setupListeners() {
 
-            p.show()
+        // Tombol kembali
+        binding.btnBack.setOnClickListener {
+            finish()
         }
+
+        // Tombol logout
+        binding.btnLogout.setOnClickListener {
+            showLogoutDialog()
+        }
+    }
+
+    private fun showLogoutDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Logout")
+            .setMessage("Apakah Anda yakin ingin keluar?")
+            .setPositiveButton("Yes") { _, _ ->
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+                finishAffinity()
+            }
+            .setNegativeButton("No", null)
+            .show()
     }
 }

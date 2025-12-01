@@ -17,10 +17,10 @@ class TaskAdapter(
 ) : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-        val tvTime: TextView = v.findViewById(R.id.tvTime)
-        val tvTitle: TextView = v.findViewById(R.id.tvTitle)
+        val tvTime: TextView = v.findViewById(R.id.tvTaskTime)
+        val tvTitle: TextView = v.findViewById(R.id.tvTaskTitle)
         val switchDone: Switch = v.findViewById(R.id.switchDone)
-        val btnDetail: ImageView = v.findViewById(R.id.btnDetail)
+        val btnDetail: ImageView = v.findViewById(R.id.btnDetailTask)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -38,12 +38,14 @@ class TaskAdapter(
         holder.tvTitle.text = item.title
         holder.switchDone.isChecked = item.isDone
 
-        // toggle switch “selesai/belum”
+        // Hindari event terpicu ulang
+        holder.switchDone.setOnCheckedChangeListener(null)
+        holder.switchDone.isChecked = item.isDone
+
         holder.switchDone.setOnCheckedChangeListener { _, state ->
             onToggle(item, state)
         }
 
-        // klik card → menuju DetailTaskActivity
         holder.btnDetail.setOnClickListener {
             onClick(item)
         }

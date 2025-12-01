@@ -20,14 +20,25 @@ class DetailTaskActivity : AppCompatActivity() {
         binding = ActivityDetailTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnBack.setOnClickListener { finish() }
+        setupListeners()
+    }
+
+    private fun setupListeners() {
+
+        // Pastikan tombol ini ada di layout
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
 
         binding.btnAddCard.setOnClickListener {
-            val text = binding.inputCard.text.toString()
+            val text = binding.inputCard.text.toString().trim()
+
             if (text.isNotEmpty()) {
                 subTasks.add(text)
                 updateList()
                 binding.inputCard.setText("")
+            } else {
+                binding.inputCard.error = "Tidak boleh kosong"
             }
         }
     }
@@ -36,15 +47,18 @@ class DetailTaskActivity : AppCompatActivity() {
         binding.listCard.removeAllViews()
 
         subTasks.forEach { t ->
-            val item = layoutInflater.inflate(R.layout.item_task, null)
+            val item = layoutInflater.inflate(R.layout.item_task, binding.listCard, false)
 
             val check = item.findViewById<android.widget.CheckBox>(R.id.checkboxTask)
             val txt = item.findViewById<android.widget.TextView>(R.id.txtTask)
 
             txt.text = t
 
-            check.setOnCheckedChangeListener { _, ch ->
-                txt.paintFlags = if (ch) {
+            check.isChecked = false
+            txt.paintFlags = txt.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+
+            check.setOnCheckedChangeListener { _, isChecked ->
+                txt.paintFlags = if (isChecked) {
                     txt.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 } else {
                     txt.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
@@ -61,19 +75,28 @@ class DetailTaskActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
 
-            R.id.menu_share -> {
-                val send = Intent(Intent.ACTION_SEND)
-                send.type = "text/plain"
-                send.putExtra(Intent.EXTRA_TEXT, "Bagikan tugas")
-                startActivity(Intent.createChooser(send, "Share via"))
+            // ID yang benar sesuai XML
+            R.id.action_share -> {
+                shareTask()
+                true
             }
 
-            R.id.menu_favorite -> {
+            R.id.action_favorite -> {
                 isFavorite = !isFavorite
+                true
             }
+
+            else -> super.onOptionsItemSelected(item)
         }
-        return true
+    }
+
+    private fun shareTask() {
+        val send = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, "Bagikan tugas")
+        }
+        startActivity(Intent.createChooser(send, "Share via"))
     }
 }

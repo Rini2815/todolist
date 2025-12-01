@@ -9,13 +9,21 @@
         android:padding="20dp"
         android:orientation="vertical">
 
+        <!-- Tombol Back -->
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back" />
+
         <TextView
             android:id="@+id/tvDetailTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Task Title"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
 
         <TextView
             android:id="@+id/tvDetailDesc"
@@ -41,11 +49,28 @@
             android:textSize="14sp"
             android:layout_marginTop="4dp" />
 
-        <Button
-            android:id="@+id/btnEditTask"
+        <!-- Input Subtask -->
+        <EditText
+            android:id="@+id/inputCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Edit Task"
+            android:hint="Add subtask..."
+            android:layout_marginTop="20dp" />
+
+        <!-- Tombol tambah subtask -->
+        <Button
+            android:id="@+id/btnAddCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Subtask"
+            android:layout_marginTop="10dp" />
+
+        <!-- List subtask -->
+        <LinearLayout
+            android:id="@+id/listCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_marginTop="20dp" />
 
     </LinearLayout>

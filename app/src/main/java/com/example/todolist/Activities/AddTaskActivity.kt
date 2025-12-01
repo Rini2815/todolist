@@ -15,22 +15,45 @@ class AddTaskActivity : AppCompatActivity() {
         binding = ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnBack.setOnClickListener { finish() }
+        setupListeners()
+    }
 
-        binding.inputDate.setOnClickListener {
-            val c = Calendar.getInstance()
-            val dp = DatePickerDialog(
-                this,
-                { _, y, m, d -> binding.inputDate.setText("$d/${m+1}/$y") },
-                c.get(Calendar.YEAR),
-                c.get(Calendar.MONTH),
-                c.get(Calendar.DAY_OF_MONTH)
-            )
-            dp.show()
+    private fun setupListeners() {
+
+        // Tombol kembali
+        binding.btnBack.setOnClickListener {
+            finish()   // lebih aman dibanding onBackPressedDispatcher
         }
 
-        binding.btnSave.setOnClickListener {
-            finish()
+        // Pilih tanggal
+        binding.edtDate.setOnClickListener {
+            showDatePicker()
         }
+
+        // Simpan tugas
+        binding.btnSaveTask.setOnClickListener {
+            saveTask()
+        }
+    }
+
+    private fun showDatePicker() {
+        val calendar = Calendar.getInstance()
+
+        val datePicker = DatePickerDialog(
+            this,
+            { _, year, month, day ->
+                binding.edtDate.setText("$day/${month + 1}/$year")
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+
+        datePicker.show()
+    }
+
+    private fun saveTask() {
+        // proses simpan data
+        finish()
     }
 }

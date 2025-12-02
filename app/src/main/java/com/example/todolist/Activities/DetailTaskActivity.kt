@@ -25,11 +25,12 @@ class DetailTaskActivity : AppCompatActivity() {
 
     private fun setupListeners() {
 
-        // Pastikan tombol ini ada di layout
+        // Tombol back
         binding.btnBack.setOnClickListener {
             finish()
         }
 
+        // Tambah sub-task
         binding.btnAddCard.setOnClickListener {
             val text = binding.inputCard.text.toString().trim()
 
@@ -46,17 +47,23 @@ class DetailTaskActivity : AppCompatActivity() {
     private fun updateList() {
         binding.listCard.removeAllViews()
 
-        subTasks.forEach { t ->
-            val item = layoutInflater.inflate(R.layout.item_task, binding.listCard, false)
+        subTasks.forEach { taskText ->
+            val item = layoutInflater.inflate(
+                R.layout.item_task,
+                binding.listCard,
+                false
+            )
 
             val check = item.findViewById<android.widget.CheckBox>(R.id.checkboxTask)
             val txt = item.findViewById<android.widget.TextView>(R.id.txtTask)
 
-            txt.text = t
+            txt.text = taskText
 
+            // Reset status
             check.isChecked = false
             txt.paintFlags = txt.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
 
+            // Strike-through ketika dicentang
             check.setOnCheckedChangeListener { _, isChecked ->
                 txt.paintFlags = if (isChecked) {
                     txt.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
@@ -74,23 +81,21 @@ class DetailTaskActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean =
+        when (item.itemId) {
 
-            // ID yang benar sesuai XML
             R.id.action_share -> {
                 shareTask()
                 true
             }
 
             R.id.action_favorite -> {
-                isFavorite = !isFavorite
+                toggleFavorite()
                 true
             }
 
             else -> super.onOptionsItemSelected(item)
         }
-    }
 
     private fun shareTask() {
         val send = Intent(Intent.ACTION_SEND).apply {
@@ -98,5 +103,10 @@ class DetailTaskActivity : AppCompatActivity() {
             putExtra(Intent.EXTRA_TEXT, "Bagikan tugas")
         }
         startActivity(Intent.createChooser(send, "Share via"))
+    }
+
+    private fun toggleFavorite() {
+        isFavorite = !isFavorite
+        // bisa ditambah icon toggle kalau mau
     }
 }

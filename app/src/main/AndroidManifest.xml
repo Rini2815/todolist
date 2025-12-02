@@ -7,7 +7,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyApp">
+        android:theme="@style/Theme.ToDoList">
 
         <!-- Splash: pertama kali dibuka -->
         <activity
@@ -20,40 +20,31 @@
         </activity>
 
         <!-- Login -->
-        <activity android:name=".activities.LoginActivity"
-            android:exported="false"/>
+        <activity android:name=".activities.LoginActivity"/>
 
         <!-- Register -->
-        <activity android:name=".activities.RegisterActivity"
-            android:exported="false"/>
+        <activity android:name=".activities.RegisterActivity"/>
 
         <!-- Beranda -->
-        <activity android:name=".activities.HomeActivity"
-            android:exported="false"/>
+        <activity android:name=".activities.HomeActivity"/>
 
         <!-- Settings -->
-        <activity android:name=".activities.SettingsActivity"
-            android:exported="false"/>
+        <activity android:name=".activities.SettingsActivity"/>
 
         <!-- Tambah Tugas -->
-        <activity android:name=".activities.AddTaskActivity"
-            android:exported="false"/>
+        <activity android:name=".activities.AddTaskActivity"/>
 
         <!-- Edit Tugas -->
-        <activity android:name=".activities.EditTaskActivity"
-            android:exported="false"/>
+        <activity android:name=".activities.EditTaskActivity"/>
 
         <!-- Detail Tugas -->
-        <activity android:name=".activities.DetailTaskActivity"
-            android:exported="false"/>
+        <activity android:name=".activities.DetailTaskActivity"/>
 
         <!-- Host Fragment -->
-        <activity android:name=".MainActivity"
-            android:exported="false"/>
+        <activity android:name=".MainActivity"/>
 
         <!-- Notifikasi Alarm -->
-        <receiver android:name=".utils.TaskAlarmReceiver"
-            android:exported="false"/>
+        <receiver android:name=".utils.TaskAlarmReceiver" />
 
     </application>
 

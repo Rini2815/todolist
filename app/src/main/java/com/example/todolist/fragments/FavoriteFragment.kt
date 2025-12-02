@@ -18,24 +18,23 @@ class FavoriteFragment : Fragment() {
     private lateinit var favAdapter: FavoriteAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
 
-        /** Adapter */
-        favAdapter = FavoriteAdapter(TaskRepository.favoriteList) { task ->
-            // Matikan favorit
+        // Ambil list favorit awal
+        favAdapter = FavoriteAdapter(TaskRepository.getFavorites()) { task ->
+            // Saat tombol favorit di-klik → matikan favorit
             task.isFavorite = false
+            TaskRepository.setFavorite(task.id, false)
 
-            // Hapus dengan aman
-            val index = TaskRepository.favoriteList.indexOf(task)
-            if (index >= 0) {
-                TaskRepository.favoriteList.removeAt(index)
-                favAdapter.notifyItemRemoved(index)
-            }
+            // Refresh list setelah perubahan
+            val newList = TaskRepository.getFavorites()
+            favAdapter.updateData(newList)
         }
 
-        /** RecyclerView */
+        // Setup RecyclerView
         binding.rvFavorite.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = favAdapter

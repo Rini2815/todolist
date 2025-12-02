@@ -25,6 +25,7 @@ class HomeFragment : Fragment() {
 
         setupRecyclerView()
 
+        // Tombol tambah task
         binding.btnAddTask.setOnClickListener {
             startActivity(Intent(requireContext(), AddTaskActivity::class.java))
         }
@@ -33,11 +34,15 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        taskAdapter = TaskAdapter(TaskRepository.taskList) { task ->
-            val intent = Intent(requireContext(), DetailTaskActivity::class.java)
-            intent.putExtra("taskId", task.id)
-            startActivity(intent)
-        }
+        // Gunakan constructor TaskAdapter dengan 2 parameter saja
+        taskAdapter = TaskAdapter(
+            TaskRepository.getAllTasks(),  // list task
+            onClick = { task ->           // klik detail task
+                val intent = Intent(requireContext(), DetailTaskActivity::class.java)
+                intent.putExtra("taskId", task.id)
+                startActivity(intent)
+            }
+        )
 
         binding.rvTodayTasks.apply {
             layoutManager = LinearLayoutManager(requireContext())
@@ -47,6 +52,7 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        // Refresh daftar task
         taskAdapter.notifyDataSetChanged()
     }
 }

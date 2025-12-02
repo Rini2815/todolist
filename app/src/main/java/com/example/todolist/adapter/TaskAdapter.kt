@@ -13,7 +13,7 @@ import com.example.todolist.model.Task
 class TaskAdapter(
     private val list: MutableList<Task>,
     private val onClick: (Task) -> Unit,
-    private val onToggle: (Task, Boolean) -> Unit
+    private val onToggle: (Task, Boolean) -> Unit = { _, _ -> } // default kosong supaya opsional
 ) : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
@@ -36,7 +36,6 @@ class TaskAdapter(
 
         holder.tvTime.text = item.time
         holder.tvTitle.text = item.title
-        holder.switchDone.isChecked = item.isDone
 
         // Hindari event terpicu ulang
         holder.switchDone.setOnCheckedChangeListener(null)

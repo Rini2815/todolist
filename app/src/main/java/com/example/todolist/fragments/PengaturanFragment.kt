@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.todolist.activities.LoginActivity
 import com.example.todolist.databinding.FragmentPengaturanBinding
-import com.example.todolist.utils.PreferenceManager
+import com.example.todolist.utils.MyPreferenceManager
 
 class PengaturanFragment : Fragment() {
 
@@ -32,7 +32,7 @@ class PengaturanFragment : Fragment() {
             .setTitle("Konfirmasi")
             .setMessage("Apakah anda yakin ingin keluar?")
             .setPositiveButton("Yes") { _, _ ->
-                PreferenceManager(requireContext()).clear()
+                MyPreferenceManager(requireContext()).clear()
                 val intent = Intent(requireContext(), LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.todolist.activities.SettingsActivity
 import com.example.todolist.databinding.FragmentProfileBinding
-import com.example.todolist.utils.PreferenceManager
+import com.example.todolist.utils.MyPreferenceManager
 
 class ProfileFragment : Fragment() {
 
@@ -19,10 +19,10 @@ class ProfileFragment : Fragment() {
     ): View {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
 
-        val prefs = PreferenceManager(requireContext())
-        val name = prefs.getUserName()
+        val prefs = MyPreferenceManager(requireContext()) // pakai MyPreferenceManager
+        val name = prefs.getUsername() // method di MyPreferenceManager tetap getUsername()
 
-        binding.tvUserName.text = "Hi $name!"
+        binding.tvUserName.text = "Hi $name!" // pastikan tvUserName ada di XML
 
         binding.menuPengaturan.setOnClickListener {
             startActivity(Intent(requireContext(), SettingsActivity::class.java))

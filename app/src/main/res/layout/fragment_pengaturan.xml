@@ -72,7 +72,7 @@
 
     <!-- Logout -->
     <LinearLayout
-        android:id="@+id/btnLogout"
+        android:id="@+id/menuLogout"
         android:orientation="horizontal"
         android:padding="16dp"
         android:layout_width="match_parent"

@@ -7,7 +7,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ToDoList">
+        android:theme="@style/Theme.MyApp">
 
         <!-- Splash: pertama kali dibuka -->
         <activity
@@ -34,8 +34,10 @@
         <!-- Tambah Tugas -->
         <activity android:name=".activities.AddTaskActivity"/>
 
-        <!-- Edit Tugas -->
-        <activity android:name=".activities.EditTaskActivity"/>
+        <!-- Edit Tugas (sudah diperbaiki) -->
+        <activity
+            android:name=".activities.EditTaskActivity"
+            android:exported="false"/>
 
         <!-- Detail Tugas -->
         <activity android:name=".activities.DetailTaskActivity"/>

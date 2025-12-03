@@ -5,13 +5,13 @@
     <item
         android:id="@+id/action_share"
         android:title="Share"
-        android:icon="@drawable/ic_share"
+        android:icon="@drawable/outline_arrow_forward_24"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_favorite"
         android:title="Add to Favorite"
-        android:icon="@drawable/icON_favorite"
+        android:icon="@drawable/baseline_favorite_24"
         app:showAsAction="ifRoom" />
 
 </menu>

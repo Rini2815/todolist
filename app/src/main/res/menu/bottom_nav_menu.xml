@@ -9,7 +9,7 @@
     <item
         android:id="@+id/favoriteFragment"
         android:title="Favorit"
-        android:icon="@drawable/outline_ac_unit_24" />
+        android:icon="@drawable/baseline_favorite_24" />
 
     <item
         android:id="@+id/profileFragment"

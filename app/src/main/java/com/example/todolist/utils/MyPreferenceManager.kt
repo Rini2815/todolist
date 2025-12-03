@@ -8,7 +8,20 @@ class MyPreferenceManager(context: Context) {
     private val prefs: SharedPreferences =
         context.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 
+    // -----------------------------
+    // Username
+    // -----------------------------
+    fun setUsername(name: String) {
+        prefs.edit().putString("username", name).apply()
+    }
+
+    fun getUsername(): String {
+        return prefs.getString("username", "User") ?: "User"
+    }
+
+    // -----------------------------
     // Simpan string ke SharedPreferences
+    // -----------------------------
     fun putString(key: String, value: String) {
         prefs.edit().putString(key, value).apply()
     }
@@ -18,7 +31,9 @@ class MyPreferenceManager(context: Context) {
         return prefs.getString(key, defaultValue)
     }
 
+    // -----------------------------
     // Hapus semua data
+    // -----------------------------
     fun clear() {
         prefs.edit().clear().apply()
     }

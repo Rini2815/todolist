@@ -1,14 +1,13 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
 
     id("kotlin-kapt")      // Room butuh KAPT
 }
 
 android {
     namespace = "com.example.todolist"
-    compileSdk = 35   // stabil 2025
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.todolist"
@@ -41,7 +40,7 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
+        viewBinding = true   // kamu pakai XML → benar
     }
 }
 
@@ -66,7 +65,7 @@ dependencies {
     implementation("androidx.room:room-ktx:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
 
-    // Glide (untuk gambar, kalau dipakai)
+    // Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
     kapt("com.github.bumptech.glide:compiler:4.16.0")
 

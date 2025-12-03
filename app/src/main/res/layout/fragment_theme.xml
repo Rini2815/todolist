@@ -12,11 +12,16 @@
 
         <RadioButton
             android:id="@+id/rbLight"
-            android:text="Light" />
+            android:text="Light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <RadioButton
             android:id="@+id/rbDark"
-            android:text="Dark" />
+            android:text="Dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </RadioGroup>
 
 </LinearLayout>

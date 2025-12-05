@@ -79,6 +79,10 @@ dependencies {
     // ConstraintLayout
     implementation("androidx.constraintlayout:constraintlayout:2.2.0")
 
+    implementation("com.google.android.material:material:1.12.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.8.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+
     // Unit Testing
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")

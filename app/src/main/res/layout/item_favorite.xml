@@ -31,7 +31,7 @@
         android:id="@+id/btnUnfavorite"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/baseline_favorite_24"
+        android:src="@drawable/ic_favorite"
         android:padding="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>

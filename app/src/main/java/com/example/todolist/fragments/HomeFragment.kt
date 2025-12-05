@@ -12,47 +12,83 @@ import com.example.todolist.activities.DetailTaskActivity
 import com.example.todolist.adapter.TaskAdapter
 import com.example.todolist.databinding.FragmentHomeBinding
 import com.example.todolist.model.TaskRepository
+import android.view.animation.AnimationUtils
+import com.example.todolist.R   // ✔ gunakan R dari project sendiri
 
 class HomeFragment : Fragment() {
-
-    private lateinit var binding: FragmentHomeBinding
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     private lateinit var taskAdapter: TaskAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         setupRecyclerView()
-
-        // Tombol tambah task
-        binding.btnAddTask.setOnClickListener {
-            startActivity(Intent(requireContext(), AddTaskActivity::class.java))
-        }
+        setupListeners()
+        updateEmptyState()
 
         return binding.root
     }
 
     private fun setupRecyclerView() {
-        // Gunakan constructor TaskAdapter dengan 2 parameter saja
         taskAdapter = TaskAdapter(
-            TaskRepository.getAllTasks(),  // list task
-            onClick = { task ->           // klik detail task
+            TaskRepository.getAllTasks(),
+            onClick = { task ->
                 val intent = Intent(requireContext(), DetailTaskActivity::class.java)
                 intent.putExtra("taskId", task.id)
+                intent.putExtra("taskTitle", task.title)
+                intent.putExtra("taskDesc", task.description)
+                intent.putExtra("taskTime", task.time)
                 startActivity(intent)
+            },
+            onToggle = { task, isChecked ->
+                TaskRepository.setDone(task.id, isChecked)
+                taskAdapter.notifyDataSetChanged()
+                updateEmptyState()
             }
         )
 
         binding.rvTodayTasks.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = taskAdapter
+
+            layoutAnimation = AnimationUtils.loadLayoutAnimation(
+                requireContext(),
+                R.anim.layout_animation_fade   // ✔ tanpa .xml
+            )
+        }
+    }
+
+    private fun setupListeners() {
+        binding.fabAddTask.setOnClickListener {
+            startActivity(Intent(requireContext(), AddTaskActivity::class.java))
+        }
+    }
+
+    private fun updateEmptyState() {
+        val taskList = TaskRepository.getAllTasks()
+
+        if (taskList.isEmpty()) {
+            binding.emptyState.visibility = View.VISIBLE
+            binding.rvTodayTasks.visibility = View.GONE
+        } else {
+            binding.emptyState.visibility = View.GONE
+            binding.rvTodayTasks.visibility = View.VISIBLE
         }
     }
 
     override fun onResume() {
         super.onResume()
-        // Refresh daftar task
         taskAdapter.notifyDataSetChanged()
+        updateEmptyState()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

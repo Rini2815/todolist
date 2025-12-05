@@ -1,0 +1,35 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Garis-garis -->
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M20,30h80v10h-80z"/>
+
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M20,50h80v10h-80z"/>
+
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M20,70h80v10h-80z"/>
+
+    <!-- Lingkaran 1 -->
+    <path
+        android:fillColor="@color/accent_blue"
+        android:pathData="M30,29a6,6 0 1,0 0,12a6,6 0 1,0 0,-12"/>
+
+    <!-- Lingkaran 2 -->
+    <path
+        android:fillColor="@color/accent_blue"
+        android:pathData="M30,49a6,6 0 1,0 0,12a6,6 0 1,0 0,-12"/>
+
+    <!-- Lingkaran 3 -->
+    <path
+        android:fillColor="@color/accent_blue"
+        android:pathData="M30,69a6,6 0 1,0 0,12a6,6 0 1,0 0,-12"/>
+
+</vector>

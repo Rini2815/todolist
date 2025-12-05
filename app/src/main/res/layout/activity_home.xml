@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Tombol Back -->
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="40dp"
@@ -13,6 +12,7 @@
         android:background="@android:color/transparent"
         android:src="@drawable/arrow_back"
         android:padding="8dp"
+        android:contentDescription="@string/back_button_desc"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- App Name -->
     <string name="app_name">MyApp</string>
 
     <!-- Navigation -->
@@ -17,8 +18,28 @@
     <string name="edit_profile">Edit Profile</string>
     <string name="save">Save</string>
 
-    <!-- tambah teks -->
+    <!-- Tambah Task -->
     <string name="add_task">Tambah Tugas</string>
 
+    <!-- Login / Register -->
+    <string name="logo_desc">To-Do List Logo</string>
+    <string name="daftar_akun">Daftar Akun</string>
+
+    <!-- Input -->
+    <string name="icon_username">Username Icon</string>
+    <string name="icon_password">Password Icon</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+
+    <string name="back_button_desc">Tombol kembali</string>
+
+    <!-- Checkbox -->
+    <string name="setuju_snk">Saya setuju dengan Syarat dan Ketentuan</string>
+
+    <!-- Button -->
+    <string name="daftar">Daftar</string>
+
+    <!-- Link -->
+    <string name="sudah_punya_akun">Sudah punya akun? Masuk disini</string>
 
 </resources>

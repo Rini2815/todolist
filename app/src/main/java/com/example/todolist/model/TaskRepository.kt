@@ -1,8 +1,45 @@
 package com.example.todolist.model
 
 object TaskRepository {
-
     private val taskList = mutableListOf<Task>()
+
+    init {
+        // Dummy data untuk testing
+        addDummyData()
+    }
+
+    private fun addDummyData() {
+        taskList.add(
+            Task(
+                id = "1",
+                title = "Pemrograman Mobile",
+                description = "Membuat Project Besar Ujian Akhir Semester",
+                time = "1:35 PM",
+                isDone = false,
+                isFavorite = false
+            )
+        )
+        taskList.add(
+            Task(
+                id = "2",
+                title = "UI/UX Design",
+                description = "Mendesain aplikasi to-do list",
+                time = "1:00 PM",
+                isDone = false,
+                isFavorite = true
+            )
+        )
+        taskList.add(
+            Task(
+                id = "3",
+                title = "Sistem Cerdas",
+                description = "Belajar machine learning",
+                time = "7:00 AM",
+                isDone = true,
+                isFavorite = false
+            )
+        )
+    }
 
     // Tambah task
     fun addTask(task: Task) {
@@ -29,14 +66,12 @@ object TaskRepository {
 
     // Hapus task
     fun deleteTask(id: String) {
-        val index = taskList.indexOfFirst { it.id == id }
-        if (index != -1) taskList.removeAt(index)
+        taskList.removeIf { it.id == id }
     }
 
-    // Favorite/unfavorite
+    // Toggle favorite
     fun setFavorite(id: String, state: Boolean) {
-        val task = getTaskById(id)
-        task?.isFavorite = state
+        taskList.find { it.id == id }?.isFavorite = state
     }
 
     // Ambil yang difavoritkan
@@ -44,9 +79,14 @@ object TaskRepository {
         return taskList.filter { it.isFavorite }.toMutableList()
     }
 
-    // Set status selesai / belum
+    // Toggle status selesai
     fun setDone(id: String, state: Boolean) {
-        val task = getTaskById(id)
-        task?.isDone = state
+        taskList.find { it.id == id }?.isDone = state
+    }
+
+    // Clear all (untuk testing/logout)
+    fun clearAll() {
+        taskList.clear()
+        addDummyData()
     }
 }

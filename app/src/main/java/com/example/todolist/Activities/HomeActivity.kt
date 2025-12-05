@@ -10,7 +10,6 @@ import com.example.todolist.fragments.HomeFragment
 import com.example.todolist.fragments.ProfileFragment
 
 class HomeActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,22 +17,37 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        replaceFragment(HomeFragment())
+        // Set fragment default: HomeFragment
+        if (savedInstanceState == null) {
+            replaceFragment(HomeFragment())
+        }
 
+        setupBottomNavigation()
+    }
+
+    private fun setupBottomNavigation() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
-
-                R.id.homeFragment -> replaceFragment(HomeFragment())
-                R.id.favoriteFragment -> replaceFragment(FavoriteFragment())
-                R.id.profileFragment -> replaceFragment(ProfileFragment())
+                R.id.homeFragment -> {
+                    replaceFragment(HomeFragment())
+                    true
+                }
+                R.id.favoriteFragment -> {
+                    replaceFragment(FavoriteFragment())
+                    true
+                }
+                R.id.profileFragment -> {
+                    replaceFragment(ProfileFragment())
+                    true
+                }
+                else -> false
             }
-            true
         }
     }
 
-    private fun replaceFragment(f: Fragment) {
+    private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, f)
+            .replace(R.id.fragmentContainer, fragment)
             .commit()
     }
 }

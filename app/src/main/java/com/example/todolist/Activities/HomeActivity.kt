@@ -17,6 +17,9 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Hilangkan action bar (tombol back)
+        supportActionBar?.hide()
+
         // Set fragment default: HomeFragment
         if (savedInstanceState == null) {
             replaceFragment(HomeFragment())

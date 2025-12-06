@@ -34,13 +34,23 @@
         <!-- Tambah Tugas -->
         <activity android:name=".activities.AddTaskActivity"/>
 
-        <!-- Edit Tugas (sudah diperbaiki) -->
+        <!-- Edit Tugas -->
         <activity
             android:name=".activities.EditTaskActivity"
             android:exported="false"/>
 
         <!-- Detail Tugas -->
         <activity android:name=".activities.DetailTaskActivity"/>
+
+        <!-- Help / Pertanyaan -->
+        <activity
+            android:name=".activities.HelpActivity"
+            android:exported="false"/>
+
+        <!-- About / Tentang -->
+        <activity
+            android:name=".activities.AboutActivity"
+            android:exported="false"/>
 
         <!-- Host Fragment -->
         <activity android:name=".MainActivity"/>

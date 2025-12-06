@@ -1,47 +1,59 @@
 package com.example.todolist.activities
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.example.todolist.databinding.ActivitySettingsBinding
+import com.example.todolist.R
 
 class SettingsActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivitySettingsBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySettingsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_settings)
 
-        setupListeners()
+        setupClickListeners()
     }
 
-    private fun setupListeners() {
-
-        // Tombol kembali
-        binding.btnBack.setOnClickListener {
-            finish()
+    private fun setupClickListeners() {
+        // Back Button
+        findViewById<Button>(R.id.btnBack).setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
         }
 
-        // Tombol logout
-        binding.btnLogout.setOnClickListener {
+        // Theme
+        findViewById<LinearLayout>(R.id.menuTheme).setOnClickListener {
+            Toast.makeText(this, "Fitur Theme akan segera hadir!", Toast.LENGTH_SHORT).show()
+        }
+
+        // Privacy Policy
+        findViewById<LinearLayout>(R.id.menuPrivacy).setOnClickListener {
+            Toast.makeText(this, "Fitur Privacy Policy akan segera hadir!", Toast.LENGTH_SHORT).show()
+        }
+
+        // About App
+        findViewById<LinearLayout>(R.id.menuAboutApp).setOnClickListener {
+            startActivity(Intent(this, AboutActivity::class.java))
+        }
+
+        // Logout
+        findViewById<Button>(R.id.btnLogout).setOnClickListener {
             showLogoutDialog()
         }
     }
 
     private fun showLogoutDialog() {
         AlertDialog.Builder(this)
-            .setTitle("Logout")
+            .setTitle("Keluar")
             .setMessage("Apakah Anda yakin ingin keluar?")
-            .setPositiveButton("Yes") { _, _ ->
-                val intent = Intent(this, LoginActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                startActivity(intent)
-                finishAffinity()
+            .setPositiveButton("Ya") { _, _ ->
+                Toast.makeText(this, "Berhasil keluar", Toast.LENGTH_SHORT).show()
+                finish()
             }
-            .setNegativeButton("No", null)
+            .setNegativeButton("Batal", null)
             .show()
     }
 }

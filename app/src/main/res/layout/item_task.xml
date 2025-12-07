@@ -57,7 +57,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <!-- Hidden elements untuk kompatibilitas dengan code lama -->
+        <!-- Hidden elements untuk kompatibilitas dengan kode lama -->
         <CheckBox
             android:id="@+id/checkboxTask"
             android:layout_width="wrap_content"
@@ -83,5 +83,4 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>

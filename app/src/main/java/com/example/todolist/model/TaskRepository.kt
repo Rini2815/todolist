@@ -84,6 +84,16 @@ object TaskRepository {
         taskList.find { it.id == id }?.isDone = state
     }
 
+    // TAMBAHAN: Hitung jumlah tugas selesai
+    fun getCompletedTaskCount(): Int {
+        return taskList.count { it.isDone }
+    }
+
+    // TAMBAHAN: Hitung jumlah tugas yang belum selesai
+    fun getPendingTaskCount(): Int {
+        return taskList.count { !it.isDone }
+    }
+
     // Clear all (untuk testing/logout)
     fun clearAll() {
         taskList.clear()

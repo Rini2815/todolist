@@ -2,58 +2,59 @@ package com.example.todolist.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.LinearLayout
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.todolist.R
+import com.example.todolist.utils.MyPreferenceManager
 
 class SettingsActivity : AppCompatActivity() {
+
+    private lateinit var prefs: MyPreferenceManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
+        prefs = MyPreferenceManager(this)
+
         setupClickListeners()
     }
 
     private fun setupClickListeners() {
-        // Back Button
-        findViewById<Button>(R.id.btnBack).setOnClickListener {
+        // Tombol Back
+        findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        // Theme
-        findViewById<LinearLayout>(R.id.menuTheme).setOnClickListener {
-            Toast.makeText(this, "Fitur Theme akan segera hadir!", Toast.LENGTH_SHORT).show()
+        // Edit Profil
+        findViewById<LinearLayout>(R.id.menuEditProfile).setOnClickListener {
+            startActivity(Intent(this, EditProfileActivity::class.java))
         }
 
-        // Privacy Policy
+        // Notifikasi
+        findViewById<LinearLayout>(R.id.menuNotification).setOnClickListener {
+            startActivity(Intent(this, NotificationSettingsActivity::class.java))
+        }
+
+        // Privasi
         findViewById<LinearLayout>(R.id.menuPrivacy).setOnClickListener {
-            Toast.makeText(this, "Fitur Privacy Policy akan segera hadir!", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, PrivacyActivity::class.java))
         }
 
-        // About App
-        findViewById<LinearLayout>(R.id.menuAboutApp).setOnClickListener {
-            startActivity(Intent(this, AboutActivity::class.java))
-        }
-
-        // Logout
-        findViewById<Button>(R.id.btnLogout).setOnClickListener {
-            showLogoutDialog()
+        // Share Aplikasi
+        findViewById<LinearLayout>(R.id.menuShare).setOnClickListener {
+            shareApp()
         }
     }
 
-    private fun showLogoutDialog() {
-        AlertDialog.Builder(this)
-            .setTitle("Keluar")
-            .setMessage("Apakah Anda yakin ingin keluar?")
-            .setPositiveButton("Ya") { _, _ ->
-                Toast.makeText(this, "Berhasil keluar", Toast.LENGTH_SHORT).show()
-                finish()
-            }
-            .setNegativeButton("Batal", null)
-            .show()
+    private fun shareApp() {
+        val sendIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, "Coba aplikasi To-Do List ku 😄")
+            type = "text/plain"
+        }
+        val shareIntent = Intent.createChooser(sendIntent, "Bagikan aplikasi via...")
+        startActivity(shareIntent)
     }
 }

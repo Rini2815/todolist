@@ -5,16 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3F8FF"
+    android:background="@color/background"
     tools:context=".activities.AboutActivity">
 
-    <!-- HEADER dengan background biru -->
+    <!-- HEADER -->
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#4FACFE"
+        android:background="@color/primary"
         android:padding="20dp"
         android:elevation="4dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,28 +25,27 @@
             android:id="@+id/btnBack"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/ic_arrow_back"
+            android:src="@drawable/arrow_back"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="@color/white"
             android:contentDescription="Kembali"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="@android:color/transparent"
-            android:importantForAccessibility="yes"/>
+            android:layout_marginBottom="16dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="📝"
-            android:textSize="64sp"
+            android:textSize="48sp"
             android:layout_gravity="center"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="8dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="To-Do List"
-            android:textSize="32sp"
+            android:textSize="28sp"
             android:textStyle="bold"
-            android:textColor="@android:color/white"
+            android:textColor="@color/white"
             android:layout_gravity="center"/>
 
         <TextView
@@ -54,12 +53,10 @@
             android:layout_height="wrap_content"
             android:text="Version 1.0.0"
             android:textSize="14sp"
-            android:textColor="@android:color/white"
-            android:alpha="0.9"
+            android:textColor="@color/white"
             android:layout_marginTop="4dp"
             android:layout_gravity="center"/>
     </LinearLayout>
-
 
     <!-- SCROLL CONTENT -->
     <androidx.core.widget.NestedScrollView
@@ -79,13 +76,13 @@
             android:orientation="vertical">
 
             <!-- CARD 1: TENTANG APLIKASI -->
-            <com.google.android.material.card.MaterialCardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
-                app:cardBackgroundColor="@android:color/white">
+                app:cardBackgroundColor="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -113,29 +110,38 @@
                             android:text="Tentang Aplikasi"
                             android:textSize="20sp"
                             android:textStyle="bold"
-                            android:textColor="#1A3D7C"
+                            android:textColor="@color/text_primary"
                             android:layout_marginStart="12dp"/>
                     </LinearLayout>
+
+                    <!-- Deskripsi + Fitur -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="To-Do List adalah aplikasi manajemen tugas yang dirancang untuk membantu Anda mengatur aktivitas harian dengan lebih mudah dan terorganisir. Aplikasi ini memungkinkan Anda untuk:"
+                        android:textSize="15sp"
+                        android:textColor="@color/text_secondary"
+                        android:lineSpacingExtra="6dp"
+                        android:layout_marginBottom="8dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="To-Do List adalah aplikasi manajemen tugas yang dirancang untuk membantu Anda mengatur aktivitas harian."
+                        android:text="• Menambah dan mengelola tugas\n• Menandai tugas favorit\n• Menerima notifikasi pengingat\n• Memantau progres tugas\n• Menyimpan data dengan aman di perangkat"
                         android:textSize="15sp"
-                        android:textColor="#6B6F7B"
+                        android:textColor="@color/text_secondary"
                         android:lineSpacingExtra="6dp"/>
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
+            </androidx.cardview.widget.CardView>
 
             <!-- CARD 2: FITUR UTAMA -->
-            <com.google.android.material.card.MaterialCardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
-                app:cardBackgroundColor="@android:color/white">
+                app:cardBackgroundColor="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -163,7 +169,7 @@
                             android:text="Fitur Utama"
                             android:textSize="20sp"
                             android:textStyle="bold"
-                            android:textColor="#1A3D7C"
+                            android:textColor="@color/text_primary"
                             android:layout_marginStart="12dp"/>
                     </LinearLayout>
 
@@ -172,20 +178,19 @@
                         android:layout_height="wrap_content"
                         android:text="• Tambah &amp; kelola tugas\n• Tandai favorit\n• Notifikasi pengingat\n• Pantau progres\n• Data aman di perangkat"
                         android:textSize="15sp"
-                        android:textColor="#6B6F7B"
+                        android:textColor="@color/text_secondary"
                         android:lineSpacingExtra="6dp"/>
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
+            </androidx.cardview.widget.CardView>
 
             <!-- CARD 3: DEVELOPER -->
-            <com.google.android.material.card.MaterialCardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
-                app:cardBackgroundColor="@android:color/white">
+                app:cardBackgroundColor="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -213,7 +218,7 @@
                             android:text="Developer"
                             android:textSize="20sp"
                             android:textStyle="bold"
-                            android:textColor="#1A3D7C"
+                            android:textColor="@color/text_primary"
                             android:layout_marginStart="12dp"/>
                     </LinearLayout>
 
@@ -222,7 +227,7 @@
                         android:layout_height="wrap_content"
                         android:text="Dibuat oleh mahasiswa Politeknik Negeri Madiun"
                         android:textSize="15sp"
-                        android:textColor="#6B6F7B"
+                        android:textColor="@color/text_secondary"
                         android:layout_marginBottom="6dp"/>
 
                     <TextView
@@ -230,19 +235,18 @@
                         android:layout_height="wrap_content"
                         android:text="Program Studi: Teknologi Informasi"
                         android:textSize="14sp"
-                        android:textColor="#9AA0A6"/>
+                        android:textColor="@color/text_secondary"/>
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </androidx.cardview.widget.CardView>
 
-
-            <!-- CARD 4: THANK YOU (Biru) -->
-            <com.google.android.material.card.MaterialCardView
+            <!-- CARD 4: THANK YOU -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
-                app:cardBackgroundColor="#00B4DB">
+                app:cardBackgroundColor="@color/primary">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -263,7 +267,7 @@
                         android:layout_height="wrap_content"
                         android:text="Terima kasih telah menggunakan"
                         android:textSize="16sp"
-                        android:textColor="@android:color/white"/>
+                        android:textColor="@color/white"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -271,7 +275,7 @@
                         android:text="To-Do List!"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/white"
                         android:layout_marginTop="4dp"/>
 
                     <TextView
@@ -279,11 +283,10 @@
                         android:layout_height="wrap_content"
                         android:text="© 2025 To-Do List App"
                         android:textSize="12sp"
-                        android:textColor="@android:color/white"
-                        android:alpha="0.9"
+                        android:textColor="@color/white"
                         android:layout_marginTop="16dp"/>
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -37,9 +37,9 @@ class MyPreferenceManager(context: Context) {
     }
 
     // -----------------------------
-    // Generic String
+    // Generic String (DIPERBAIKI: bisa terima null)
     // -----------------------------
-    fun putString(key: String, value: String) {
+    fun putString(key: String, value: String?) {
         prefs.edit().putString(key, value).apply()
     }
 

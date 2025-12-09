@@ -14,4 +14,11 @@
         android:icon="@drawable/ic_favorite"
         app:showAsAction="ifRoom" />
 
+    <!-- Item Edit yang kamu butuhkan -->
+    <item
+        android:id="@+id/action_edit"
+        android:title="Edit Task"
+        android:icon="@drawable/ic_edit"
+        app:showAsAction="ifRoom" />
+
 </menu>

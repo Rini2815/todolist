@@ -10,12 +10,14 @@
         android:orientation="vertical">
 
         <!-- Tombol Back -->
-        <Button
+        <ImageButton
             android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Back" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_arrow_back" />
 
+        <!-- Title -->
         <TextView
             android:id="@+id/tvDetailTitle"
             android:layout_width="match_parent"
@@ -23,8 +25,9 @@
             android:text="Task Title"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="10dp" />
 
+        <!-- Description -->
         <TextView
             android:id="@+id/tvDetailDesc"
             android:layout_width="match_parent"
@@ -33,6 +36,7 @@
             android:layout_marginTop="8dp"
             android:textSize="16sp" />
 
+        <!-- Date -->
         <TextView
             android:id="@+id/tvDetailDate"
             android:layout_width="match_parent"
@@ -41,6 +45,7 @@
             android:textSize="14sp"
             android:layout_marginTop="8dp" />
 
+        <!-- Time -->
         <TextView
             android:id="@+id/tvDetailTime"
             android:layout_width="match_parent"

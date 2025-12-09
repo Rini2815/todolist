@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- PERMISSION NOTIFIKASI - TAMBAHKAN INI -->
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
-    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
+    <!-- ==== PERMISSIONS ==== -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp">
 
-        <!-- Splash: pertama kali dibuka -->
+        <!-- ==== SPLASH (LAUNCHER) ==== -->
         <activity
             android:name=".activities.SplashActivity"
             android:exported="true">
@@ -25,58 +25,43 @@
             </intent-filter>
         </activity>
 
-        <!-- Login -->
-        <activity android:name=".activities.LoginActivity"/>
+        <!-- ==== LOGIN / REGISTER ==== -->
+        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.RegisterActivity" />
 
-        <!-- Register -->
-        <activity android:name=".activities.RegisterActivity"/>
+        <!-- ==== HOME / MAIN ==== -->
+        <activity android:name=".activities.HomeActivity" />
+        <activity android:name=".MainActivity" />
 
-        <!-- Beranda -->
-        <activity android:name=".activities.HomeActivity"/>
-
-        <!-- Settings -->
+        <!-- ==== SETTINGS ==== -->
         <activity
             android:name=".activities.SettingsActivity"
             android:exported="true" />
 
-        <!-- Edit Profil -->
         <activity android:name=".activities.EditProfileActivity" />
-
-        <!-- Notification Settings  -->
         <activity
             android:name=".activities.NotificationSettingsActivity"
             android:exported="true" />
-
-        <!-- Privasi -->
         <activity
             android:name=".activities.PrivacyActivity"
             android:exported="true" />
 
-        <!-- Tambah Tugas -->
-        <activity android:name=".activities.AddTaskActivity"/>
-
-        <!-- Edit Tugas -->
+        <!-- ==== TUGAS ==== -->
+        <activity android:name=".activities.AddTaskActivity" />
         <activity
             android:name=".activities.EditTaskActivity"
-            android:exported="false"/>
+            android:exported="false" />
+        <activity android:name=".activities.DetailTaskActivity" />
 
-        <!-- Detail Tugas -->
-        <activity android:name=".activities.DetailTaskActivity"/>
-
-        <!-- Help / Pertanyaan -->
+        <!-- ==== HELP / ABOUT ==== -->
         <activity
             android:name=".activities.HelpActivity"
-            android:exported="false"/>
-
-        <!-- About / Tentang -->
+            android:exported="false" />
         <activity
             android:name=".activities.AboutActivity"
-            android:exported="false"/>
+            android:exported="false" />
 
-        <!-- Host Fragment -->
-        <activity android:name=".MainActivity"/>
-
-        <!-- Notifikasi Alarm - PERBAIKI: tambahkan exported dan enabled -->
+        <!-- ==== ALARM RECEIVER ==== -->
         <receiver
             android:name=".utils.TaskAlarmReceiver"
             android:enabled="true"

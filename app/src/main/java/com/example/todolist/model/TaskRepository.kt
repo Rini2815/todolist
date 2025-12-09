@@ -1,10 +1,10 @@
 package com.example.todolist.model
 
 object TaskRepository {
+
     private val taskList = mutableListOf<Task>()
 
     init {
-        // Dummy data untuk testing
         addDummyData()
     }
 
@@ -15,11 +15,16 @@ object TaskRepository {
                 title = "Pemrograman Mobile",
                 description = "Membuat Project Besar Ujian Akhir Semester",
                 time = "1:35 PM",
-                date = "12 Jan 2025",   // ← WAJIB ADA
+                date = "12 Jan 2025",
+                subtasks = mutableListOf(
+                    SubTask(text = "UI/UX Design", isDone = false),
+                    SubTask(text = "Implementasi ke Aplikasi", isDone = false)
+                ),
                 isDone = false,
                 isFavorite = false
             )
         )
+
         taskList.add(
             Task(
                 id = "2",
@@ -27,10 +32,12 @@ object TaskRepository {
                 description = "Mendesain aplikasi to-do list",
                 time = "1:00 PM",
                 date = "12 Jan 2025",
+                subtasks = mutableListOf(),
                 isDone = false,
                 isFavorite = true
             )
         )
+
         taskList.add(
             Task(
                 id = "3",
@@ -38,6 +45,9 @@ object TaskRepository {
                 description = "Belajar machine learning",
                 time = "7:00 AM",
                 date = "13 Jan 2025",
+                subtasks = mutableListOf(
+                    SubTask(text = "Belajar Linear Regression", isDone = true)
+                ),
                 isDone = true,
                 isFavorite = false
             )

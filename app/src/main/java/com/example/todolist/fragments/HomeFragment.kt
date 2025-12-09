@@ -13,9 +13,10 @@ import com.example.todolist.adapter.TaskAdapter
 import com.example.todolist.databinding.FragmentHomeBinding
 import com.example.todolist.model.TaskRepository
 import android.view.animation.AnimationUtils
-import com.example.todolist.R   // ✔ gunakan R dari project sendiri
+import com.example.todolist.R
 
 class HomeFragment : Fragment() {
+
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var taskAdapter: TaskAdapter
@@ -34,6 +35,9 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    // ==================================
+    //         SETUP RECYCLER VIEW
+    // ==================================
     private fun setupRecyclerView() {
         taskAdapter = TaskAdapter(
             TaskRepository.getAllTasks(),
@@ -43,6 +47,7 @@ class HomeFragment : Fragment() {
                 intent.putExtra("taskTitle", task.title)
                 intent.putExtra("taskDesc", task.description)
                 intent.putExtra("taskTime", task.time)
+                intent.putExtra("taskDate", task.date)   // ✔ ditambahkan
                 startActivity(intent)
             },
             onToggle = { task, isChecked ->
@@ -56,19 +61,28 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = taskAdapter
 
-            layoutAnimation = AnimationUtils.loadLayoutAnimation(
-                requireContext(),
-                R.anim.layout_animation_fade   // ✔ tanpa .xml
-            )
+            // ✔ animasi list (kalau file-nya ada)
+            try {
+                layoutAnimation = AnimationUtils.loadLayoutAnimation(
+                    requireContext(),
+                    R.anim.layout_animation_fade
+                )
+            } catch (_: Exception) { }
         }
     }
 
+    // ==================================
+    //             LISTENERS
+    // ==================================
     private fun setupListeners() {
         binding.fabAddTask.setOnClickListener {
             startActivity(Intent(requireContext(), AddTaskActivity::class.java))
         }
     }
 
+    // ==================================
+    //         EMPTY STATE HANDLER
+    // ==================================
     private fun updateEmptyState() {
         val taskList = TaskRepository.getAllTasks()
 

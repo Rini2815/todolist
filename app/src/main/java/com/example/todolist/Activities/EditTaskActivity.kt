@@ -1,77 +1,207 @@
 package com.example.todolist.activities
 
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
+import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.todolist.databinding.ActivityEditTaskBinding
-import java.util.Calendar
+import com.example.todolist.model.Task
+import com.example.todolist.model.TaskRepository
+import java.text.SimpleDateFormat
+import java.util.*
 
 class EditTaskActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEditTaskBinding
-    private val calendar = Calendar.getInstance()
+    private var taskId: String = ""
+    private var selectedDate: String = ""
+    private var selectedTime: String = ""
+    private var isCalendarVisible = false
+    private var isTimePickerVisible = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Ambil data dari Activity sebelumnya (jika ada)
-        binding.editTitle.setText(intent.getStringExtra("title") ?: "")
-        binding.editDesc.setText(intent.getStringExtra("desc") ?: "")
-        binding.editDate.setText(intent.getStringExtra("date") ?: "")
-        binding.editTime.setText(intent.getStringExtra("time") ?: "")
-
+        loadTaskData()
         setupListeners()
+        setupCalendar()
+        setupTimePicker()
     }
 
+    // ============================================
+    //                 LOAD DATA
+    // ============================================
+    private fun loadTaskData() {
+        taskId = intent.getStringExtra("taskId") ?: ""
+
+        val task = TaskRepository.getTaskById(taskId)
+
+        if (task != null) {
+            binding.edtTitle.setText(task.title)
+            binding.edtDesc.setText(task.description)
+            binding.edtDate.setText(task.date)
+            binding.edtTime.setText(convertTo24Hour(task.time))
+
+            selectedDate = task.date
+            selectedTime = convertTo24Hour(task.time)
+
+            binding.switchFavorite.isChecked = task.isFavorite
+        }
+    }
+
+    // ============================================
+    //                LISTENER BUTTON
+    // ============================================
     private fun setupListeners() {
+        binding.btnBack.setOnClickListener { finish() }
 
-        // Date picker
-        binding.editDate.setOnClickListener {
-            val year = calendar.get(Calendar.YEAR)
-            val month = calendar.get(Calendar.MONTH)
-            val day = calendar.get(Calendar.DAY_OF_MONTH)
+        binding.edtDate.setOnClickListener { toggleCalendar() }
+        binding.btnCalendar.setOnClickListener { toggleCalendar() }
 
-            DatePickerDialog(this, { _, y, m, d ->
-                binding.editDate.setText("$d/${m + 1}/$y")
-            }, year, month, day).show()
+        binding.edtTime.setOnClickListener { toggleTimePicker() }
+        binding.btnClock.setOnClickListener { toggleTimePicker() }
+
+        binding.btnUpdateTask.setOnClickListener { saveTask() }
+    }
+
+    // ============================================
+    //                  CALENDAR
+    // ============================================
+    private fun setupCalendar() {
+        binding.calendarView.minDate = System.currentTimeMillis()
+
+        binding.calendarView.setOnDateChangeListener { _, year, month, day ->
+            selectedDate = String.format("%02d/%02d/%d", day, month + 1, year)
+            binding.edtDate.setText(selectedDate)
+            hideCalendar()
+        }
+    }
+
+    private fun toggleCalendar() {
+        if (isCalendarVisible) hideCalendar()
+        else {
+            showCalendar()
+            if (isTimePickerVisible) hideTimePicker()
+        }
+    }
+
+    private fun showCalendar() {
+        binding.cardCalendar.visibility = View.VISIBLE
+        isCalendarVisible = true
+    }
+
+    private fun hideCalendar() {
+        binding.cardCalendar.visibility = View.GONE
+        isCalendarVisible = false
+    }
+
+    // ============================================
+    //                TIME PICKER
+    // ============================================
+    private fun setupTimePicker() {
+        binding.timePicker.setIs24HourView(true)
+
+        binding.btnOkTime.setOnClickListener {
+            val hour = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                binding.timePicker.hour else binding.timePicker.currentHour
+
+            val minute = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                binding.timePicker.minute else binding.timePicker.currentMinute
+
+            selectedTime = String.format("%02d:%02d", hour, minute)
+            binding.edtTime.setText(selectedTime)
+
+            hideTimePicker()
         }
 
-        // Time picker
-        binding.editTime.setOnClickListener {
-            val hour = calendar.get(Calendar.HOUR_OF_DAY)
-            val minute = calendar.get(Calendar.MINUTE)
+        binding.btnCancelTime.setOnClickListener { hideTimePicker() }
+    }
 
-            TimePickerDialog(this, { _, h, m ->
-                binding.editTime.setText(String.format("%02d:%02d", h, m))
-            }, hour, minute, true).show()
+    private fun toggleTimePicker() {
+        if (isTimePickerVisible) hideTimePicker()
+        else {
+            showTimePicker()
+            if (isCalendarVisible) hideCalendar()
+        }
+    }
+
+    private fun showTimePicker() {
+        binding.cardTimePicker.visibility = View.VISIBLE
+        isTimePickerVisible = true
+    }
+
+    private fun hideTimePicker() {
+        binding.cardTimePicker.visibility = View.GONE
+        isTimePickerVisible = false
+    }
+
+    // ============================================
+    //                SAVE TASK
+    // ============================================
+    private fun saveTask() {
+        val title = binding.edtTitle.text.toString().trim()
+        val desc = binding.edtDesc.text.toString().trim()
+        val isFavorite = binding.switchFavorite.isChecked
+
+        if (title.isEmpty()) {
+            binding.edtTitle.error = "Judul tidak boleh kosong"
+            return
         }
 
-        // Button Update
-        binding.btnUpdateTask.setOnClickListener {
+        if (selectedDate.isEmpty()) {
+            Toast.makeText(this, "Pilih tanggal", Toast.LENGTH_SHORT).show()
+            return
+        }
 
-            val title = binding.editTitle.text.toString().trim()
-            val desc = binding.editDesc.text.toString().trim()
+        if (selectedTime.isEmpty()) {
+            Toast.makeText(this, "Pilih waktu", Toast.LENGTH_SHORT).show()
+            return
+        }
 
-            if (title.isEmpty()) {
-                binding.editTitle.error = "Judul tidak boleh kosong"
-                return@setOnClickListener
-            }
+        val task = TaskRepository.getTaskById(taskId)
 
-            // Kirim hasil update kembali
-            val resultIntent = intent
-            resultIntent.putExtra("updated_title", title)
-            resultIntent.putExtra("updated_desc", desc)
-            resultIntent.putExtra("updated_date", binding.editDate.text.toString())
-            resultIntent.putExtra("updated_time", binding.editTime.text.toString())
+        if (task != null) {
+            task.title = title
+            task.description = desc
+            task.date = selectedDate
+            task.time = formatTime(selectedTime)
+            task.isFavorite = isFavorite
 
-            setResult(RESULT_OK, resultIntent)
+            TaskRepository.updateTask(task)
 
-            Toast.makeText(this, "Tugas berhasil diperbarui", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Tugas berhasil diperbarui!", Toast.LENGTH_SHORT).show()
+            setResult(RESULT_OK)
             finish()
+        } else {
+            Toast.makeText(this, "Task tidak ditemukan", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    // ============================================
+    //         KONVERSI WAKTU 12 JAM / 24 JAM
+    // ============================================
+    private fun formatTime(time24: String): String {
+        return try {
+            val inFmt = SimpleDateFormat("HH:mm", Locale.getDefault())
+            val outFmt = SimpleDateFormat("h:mm a", Locale.getDefault())
+            val date = inFmt.parse(time24)
+            outFmt.format(date ?: Date())
+        } catch (e: Exception) {
+            time24
+        }
+    }
+
+    private fun convertTo24Hour(time12: String): String {
+        return try {
+            val inFmt = SimpleDateFormat("h:mm a", Locale.getDefault())
+            val outFmt = SimpleDateFormat("HH:mm", Locale.getDefault())
+            val date = inFmt.parse(time12)
+            outFmt.format(date ?: Date())
+        } catch (e: Exception) {
+            time12
         }
     }
 }

@@ -124,7 +124,7 @@ class AddTaskActivity : AppCompatActivity() {
         }
 
         // Tampilkan toast sukses
-        Toast.makeText(this, "✅ Tugas berhasil ditambahkan!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, " Tugas berhasil ditambahkan!", Toast.LENGTH_SHORT).show()
 
         // Kembali ke home
         finish()
@@ -133,6 +133,6 @@ class AddTaskActivity : AppCompatActivity() {
     private fun setupNotification(task: Task, date: String) {
         // TODO: Implement notification dengan AlarmManager
         // Untuk saat ini just placeholder
-        Toast.makeText(this, "🔔 Pengingat akan diaktifkan untuk $date", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, " Pengingat akan diaktifkan untuk $date", Toast.LENGTH_SHORT).show()
     }
 }

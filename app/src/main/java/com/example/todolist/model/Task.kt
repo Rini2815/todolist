@@ -6,7 +6,7 @@ data class Task(
     var description: String = "",
     var time: String = "",
     var date: String = "",
-    var subtasks: MutableList<SubTask> = mutableListOf(), // Subtask list
+    var subtasks: MutableList<SubTask> = mutableListOf(),
     var isDone: Boolean = false,
     var isFavorite: Boolean = false
 )

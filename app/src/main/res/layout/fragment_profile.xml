@@ -7,9 +7,6 @@
     android:layout_height="match_parent"
     android:background="@color/background">
 
-    <!-- Header Background -->
-
-    <!-- Profile Image -->
 
     <View
         android:id="@+id/headerBg"
@@ -34,7 +31,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="60dp"/>
 
-    <!-- Username -->
     <TextView
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
@@ -48,7 +44,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Email -->
     <TextView
         android:id="@+id/tvEmail"
         android:layout_width="wrap_content"
@@ -61,7 +56,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- Scroll Content -->
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -77,7 +71,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Ringkasan Tugas -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -93,7 +86,6 @@
                 android:orientation="horizontal"
                 android:layout_marginBottom="24dp">
 
-                <!-- Card Tugas Selesai -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -129,7 +121,6 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Card Tugas Tersedia -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -166,7 +157,6 @@
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 
-            <!-- MENU CEPAT -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -179,7 +169,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <!-- Pengaturan -->
                     <LinearLayout
                         android:id="@+id/menuPengaturan"
                         android:layout_width="match_parent"
@@ -206,7 +195,6 @@
 
                     <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/gray_light" android:layout_marginStart="56dp"/>
 
-                    <!-- Pertanyaan -->
                     <LinearLayout
                         android:id="@+id/menuHelp"
                         android:layout_width="match_parent"
@@ -233,7 +221,6 @@
 
                     <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/gray_light" android:layout_marginStart="56dp"/>
 
-                    <!-- Tentang Aplikasi -->
                     <LinearLayout
                         android:id="@+id/menuAbout"
                         android:layout_width="match_parent"
@@ -260,7 +247,6 @@
 
                     <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/gray_light" android:layout_marginStart="56dp"/>
 
-                    <!-- Keluar -->
                     <LinearLayout
                         android:id="@+id/menuLogout"
                         android:layout_width="match_parent"

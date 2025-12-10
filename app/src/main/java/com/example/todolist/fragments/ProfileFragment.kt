@@ -36,7 +36,6 @@ class ProfileFragment : Fragment() {
         loadUserProfile()
         loadTaskStatistics()
 
-        // Menu cepat
         binding.menuPengaturan.setOnClickListener {
             startActivity(Intent(requireContext(), SettingsActivity::class.java))
         }

@@ -28,20 +28,17 @@ class NotificationSettingsActivity : AppCompatActivity() {
 
         prefs = MyPreferenceManager(this)
 
-        // Inisialisasi view
         switchNotification = findViewById(R.id.switchNotification)
         switchVibrate = findViewById(R.id.switchVibrate)
         btnSelectSound = findViewById(R.id.btnSelectSound)
         tvSelectedSound = findViewById(R.id.tvSelectedSound)
 
-        // Tombol back
         findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
 
         loadSettings()
 
-        // Toggle notifikasi
         switchNotification.setOnCheckedChangeListener { _, isChecked ->
             prefs.putBoolean("notification_enabled", isChecked)
             Toast.makeText(
@@ -51,7 +48,6 @@ class NotificationSettingsActivity : AppCompatActivity() {
             ).show()
         }
 
-        // Toggle getar
         switchVibrate.setOnCheckedChangeListener { _, isChecked ->
             prefs.putBoolean("notification_vibrate", isChecked)
             Toast.makeText(
@@ -61,7 +57,6 @@ class NotificationSettingsActivity : AppCompatActivity() {
             ).show()
         }
 
-        // Pilih suara notifikasi
         btnSelectSound.setOnClickListener {
             val ringtoneUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
             selectedSoundUri = ringtoneUri
@@ -76,7 +71,6 @@ class NotificationSettingsActivity : AppCompatActivity() {
         switchNotification.isChecked = prefs.getBoolean("notification_enabled", true)
         switchVibrate.isChecked = prefs.getBoolean("notification_vibrate", true)
 
-        // Load sound notifikasi
         val soundUriString = prefs.getString("notification_sound")
         selectedSoundUri = if (!soundUriString.isNullOrEmpty()) Uri.parse(soundUriString) else null
         tvSelectedSound.text = if (selectedSoundUri != null) "Nada: Default" else "Nada: Tidak dipilih"

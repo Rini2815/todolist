@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:padding="32dp">
 
-        <!-- Logo To-Do List -->
         <ImageView
             android:id="@+id/imgLogo"
             android:layout_width="120dp"
@@ -24,7 +23,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="40dp"/>
 
-        <!-- Title -->
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
@@ -38,7 +36,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <!-- Card Container -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardInput"
             android:layout_width="0dp"
@@ -57,7 +54,6 @@
                 android:orientation="vertical"
                 android:padding="24dp">
 
-                <!-- Username -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -92,7 +88,6 @@
                         android:autofillHints="username"/>
                 </LinearLayout>
 
-                <!-- Password -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -128,7 +123,6 @@
                         android:autofillHints="password"/>
                 </LinearLayout>
 
-                <!-- Checkbox -->
                 <CheckBox
                     android:id="@+id/checkbox"
                     android:layout_width="wrap_content"
@@ -139,7 +133,6 @@
                     android:layout_marginTop="16dp"
                     android:buttonTint="@color/accent_blue"/>
 
-                <!-- Button -->
                 <Button
                     android:id="@+id/btnLogin"
                     android:layout_width="match_parent"
@@ -154,7 +147,6 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Link Login -->
         <TextView
             android:id="@+id/txtRegister"
             android:layout_width="wrap_content"

@@ -35,9 +35,6 @@ class AddTaskActivity : AppCompatActivity() {
         setupTimePicker()
     }
 
-    // ==============================
-    //        SETUP LISTENERS
-    // ==============================
     private fun setupListeners() {
         binding.btnBack.setOnClickListener { finish() }
 
@@ -50,9 +47,7 @@ class AddTaskActivity : AppCompatActivity() {
         binding.btnSaveTask.setOnClickListener { saveTask() }
     }
 
-    // ==============================
-    //        CALENDAR PICKER
-    // ==============================
+
     private fun setupCalendar() {
         binding.calendarView.minDate = System.currentTimeMillis()
 
@@ -90,9 +85,6 @@ class AddTaskActivity : AppCompatActivity() {
         isCalendarVisible = false
     }
 
-    // ==============================
-    //         TIME PICKER
-    // ==============================
     private fun setupTimePicker() {
         binding.timePicker.setIs24HourView(true)
 
@@ -134,9 +126,6 @@ class AddTaskActivity : AppCompatActivity() {
         isTimePickerVisible = false
     }
 
-    // ==============================
-    //            SAVE TASK
-    // ==============================
     private fun saveTask() {
         val title = binding.edtTitle.text.toString().trim()
         val desc = binding.edtDesc.text.toString().trim()
@@ -189,9 +178,6 @@ class AddTaskActivity : AppCompatActivity() {
         }
     }
 
-    // ==============================
-    //         SETUP REMINDER
-    // ==============================
     private fun setupAlarm(task: Task) {
         try {
             val parts = selectedTime.split(":")

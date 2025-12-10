@@ -14,9 +14,6 @@ class MyPreferenceManager(context: Context) {
     private val prefs: SharedPreferences =
         context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
 
-    // -----------------------------
-    // Username
-    // -----------------------------
     fun setUsername(name: String) {
         prefs.edit().putString(KEY_USERNAME, name).apply()
     }
@@ -25,9 +22,6 @@ class MyPreferenceManager(context: Context) {
         return prefs.getString(KEY_USERNAME, "User") ?: "User"
     }
 
-    // -----------------------------
-    // Email
-    // -----------------------------
     fun setEmail(email: String) {
         prefs.edit().putString(KEY_EMAIL, email).apply()
     }
@@ -36,9 +30,6 @@ class MyPreferenceManager(context: Context) {
         return prefs.getString(KEY_EMAIL, "") ?: ""
     }
 
-    // -----------------------------
-    // Generic String (DIPERBAIKI: bisa terima null)
-    // -----------------------------
     fun putString(key: String, value: String?) {
         prefs.edit().putString(key, value).apply()
     }
@@ -47,9 +38,6 @@ class MyPreferenceManager(context: Context) {
         return prefs.getString(key, defaultValue)
     }
 
-    // -----------------------------
-    // Boolean
-    // -----------------------------
     fun putBoolean(key: String, value: Boolean) {
         prefs.edit().putBoolean(key, value).apply()
     }
@@ -58,9 +46,6 @@ class MyPreferenceManager(context: Context) {
         return prefs.getBoolean(key, defaultValue)
     }
 
-    // -----------------------------
-    // Clear All
-    // -----------------------------
     fun clear() {
         prefs.edit().clear().apply()
     }

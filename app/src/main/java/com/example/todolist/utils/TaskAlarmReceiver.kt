@@ -13,7 +13,6 @@ class TaskAlarmReceiver : BroadcastReceiver() {
 
         Log.d("TaskAlarmReceiver", "Alarm triggered for: $taskTitle")
 
-        // Tampilkan notifikasi
         NotificationHelper.showNotification(
             context = context,
             title = "⏰ $taskTitle",

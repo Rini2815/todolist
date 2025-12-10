@@ -10,7 +10,6 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <!-- Title -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -20,14 +19,12 @@
             android:gravity="center"
             android:paddingBottom="20dp" />
 
-        <!-- Username -->
         <EditText
             android:id="@+id/edtUsernameReg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Username" />
 
-        <!-- Email -->
         <EditText
             android:id="@+id/edtEmailReg"
             android:layout_width="match_parent"
@@ -35,7 +32,6 @@
             android:hint="Email"
             android:layout_marginTop="12dp" />
 
-        <!-- Password -->
         <EditText
             android:id="@+id/edtPassReg"
             android:layout_width="match_parent"
@@ -44,7 +40,6 @@
             android:inputType="textPassword"
             android:layout_marginTop="12dp" />
 
-        <!-- Button Register -->
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
@@ -52,7 +47,6 @@
             android:text="Register"
             android:layout_marginTop="20dp" />
 
-        <!-- Link ke Login -->
         <TextView
             android:id="@+id/tvGoLogin"
             android:layout_width="match_parent"

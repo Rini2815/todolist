@@ -16,14 +16,12 @@
         android:padding="16dp"
         android:gravity="center_vertical">
 
-        <!-- Checkbox -->
         <CheckBox
             android:id="@+id/checkboxSubtask"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:buttonTint="@color/white"/>
 
-        <!-- Text Subtask -->
         <TextView
             android:id="@+id/txtSubtask"
             android:layout_width="0dp"
@@ -34,7 +32,6 @@
             android:textColor="@color/white"
             android:layout_marginStart="12dp"/>
 
-        <!-- Button Delete -->
         <ImageButton
             android:id="@+id/btnDeleteSubtask"
             android:layout_width="32dp"

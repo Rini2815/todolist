@@ -17,7 +17,6 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <!-- Waktu Tugas -->
         <TextView
             android:id="@+id/tvTaskTime"
             android:layout_width="wrap_content"
@@ -29,7 +28,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
-        <!-- Judul Tugas -->
         <TextView
             android:id="@+id/tvTaskTitle"
             android:layout_width="0dp"
@@ -45,7 +43,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/switchDone"/>
 
-        <!-- Switch Status Done -->
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switchDone"
             android:layout_width="wrap_content"
@@ -57,7 +54,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <!-- Hidden elements untuk kompatibilitas dengan kode lama -->
         <CheckBox
             android:id="@+id/checkboxTask"
             android:layout_width="wrap_content"

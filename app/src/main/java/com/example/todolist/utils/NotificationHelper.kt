@@ -47,10 +47,9 @@ object NotificationHelper {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
 
-        // Sound notifikasi
+
         val soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
-        // Buat notifikasi
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification) // Pastikan icon ini ada
             .setContentTitle(title)
@@ -63,7 +62,6 @@ object NotificationHelper {
             .setVibrate(longArrayOf(0, 500, 200, 500))
             .build()
 
-        // Tampilkan notifikasi
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.notify(taskId?.hashCode() ?: 1001, notification)
     }

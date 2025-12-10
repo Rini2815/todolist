@@ -8,7 +8,6 @@
     android:background="@color/background"
     tools:context=".activities.AboutActivity">
 
-    <!-- HEADER -->
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
@@ -58,7 +57,6 @@
             android:layout_gravity="center"/>
     </LinearLayout>
 
-    <!-- SCROLL CONTENT -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -134,7 +132,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CARD 2: FITUR UTAMA -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -183,7 +180,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- CARD 3: DEVELOPER -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -34,11 +34,9 @@ class TaskAdapter(
             tvTaskTime.text = item.time
             tvTaskTitle.text = item.title
 
-            // Set switch state tanpa trigger listener
             switchDone.setOnCheckedChangeListener(null)
             switchDone.isChecked = item.isDone
 
-            // Apply strikethrough jika task selesai
             if (item.isDone) {
                 tvTaskTitle.paintFlags = tvTaskTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                 tvTaskTitle.alpha = 0.5f
@@ -49,11 +47,9 @@ class TaskAdapter(
                 tvTaskTime.alpha = 1f
             }
 
-            // Set listener untuk switch
             switchDone.setOnCheckedChangeListener { _, isChecked ->
                 onToggle(item, isChecked)
 
-                // Update visual immediately
                 if (isChecked) {
                     tvTaskTitle.paintFlags = tvTaskTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                     tvTaskTitle.alpha = 0.5f
@@ -65,7 +61,6 @@ class TaskAdapter(
                 }
             }
 
-            // Klik card -> Detail
             root.setOnClickListener {
                 onClick(item)
             }

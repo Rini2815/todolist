@@ -40,9 +40,6 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    // ==================================
-    //         SETUP RECYCLER VIEW
-    // ==================================
     private fun setupRecyclerView() {
 
         taskAdapter = TaskAdapter(
@@ -92,20 +89,16 @@ class HomeFragment : Fragment() {
         }
     }
 
-    // ==================================
-    //            CANCEL ALARM
-    // ==================================
     private fun cancelAlarm(task: Task) {
         try {
             val alarmManager =
                 requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
-            // FIX: Ganti AlarmReceiver -> TaskAlarmReceiver
             val intent = Intent(requireContext(), TaskAlarmReceiver::class.java)
 
             val pendingIntent = PendingIntent.getBroadcast(
                 requireContext(),
-                task.id.hashCode(), // FIX: harus Int
+                task.id.hashCode(),
                 intent,
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
@@ -118,18 +111,13 @@ class HomeFragment : Fragment() {
         }
     }
 
-    // ==================================
-    //             LISTENERS
-    // ==================================
+
     private fun setupListeners() {
         binding.fabAddTask.setOnClickListener {
             startActivity(Intent(requireContext(), AddTaskActivity::class.java))
         }
     }
 
-    // ==================================
-    //         EMPTY STATE HANDLER
-    // ==================================
     private fun updateEmptyState() {
         val list = TaskRepository.getAllTasks()
 

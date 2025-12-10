@@ -8,7 +8,6 @@
     android:gravity="center_vertical"
     android:background="?attr/selectableItemBackground">
 
-    <!-- Icon kategori -->
     <TextView
         android:id="@+id/tvCategoryIcon"
         android:layout_width="40dp"
@@ -17,7 +16,6 @@
         android:text="🏷️"
         android:textSize="20sp"/>
 
-    <!-- Nama kategori -->
     <TextView
         android:id="@+id/tvCategoryName"
         android:layout_width="0dp"
@@ -27,7 +25,6 @@
         android:textSize="16sp"
         android:layout_marginStart="16dp"/>
 
-    <!-- Tombol hapus -->
     <ImageButton
         android:id="@+id/btnDeleteCategory"
         android:layout_width="32dp"

@@ -23,20 +23,17 @@ class EditProfileActivity : AppCompatActivity() {
         val btnSave = findViewById<Button>(R.id.btnSave)
         val btnBack = findViewById<ImageButton>(R.id.btnBack) // tombol back
 
-        // Tampilkan data sebelumnya
         etName.setText(prefs.getUsername())
         etEmail.setText(prefs.getString("email") ?: "")
 
-        // Tombol simpan
         btnSave.setOnClickListener {
             prefs.setUsername(etName.text.toString())
             prefs.putString("email", etEmail.text.toString())
-            finish() // balik ke SettingsActivity
+            finish()
         }
 
-        // Tombol back
         btnBack.setOnClickListener {
-            onBackPressedDispatcher.onBackPressed() // kembali ke halaman sebelumnya
+            onBackPressedDispatcher.onBackPressed()
         }
     }
 }

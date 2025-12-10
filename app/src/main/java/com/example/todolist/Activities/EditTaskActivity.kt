@@ -31,9 +31,6 @@ class EditTaskActivity : AppCompatActivity() {
         setupTimePicker()
     }
 
-    // ============================================
-    //                 LOAD DATA
-    // ============================================
     private fun loadTaskData() {
         taskId = intent.getStringExtra("taskId") ?: ""
 
@@ -52,9 +49,6 @@ class EditTaskActivity : AppCompatActivity() {
         }
     }
 
-    // ============================================
-    //                LISTENER BUTTON
-    // ============================================
     private fun setupListeners() {
         binding.btnBack.setOnClickListener { finish() }
 
@@ -67,9 +61,6 @@ class EditTaskActivity : AppCompatActivity() {
         binding.btnUpdateTask.setOnClickListener { saveTask() }
     }
 
-    // ============================================
-    //                  CALENDAR
-    // ============================================
     private fun setupCalendar() {
         binding.calendarView.minDate = System.currentTimeMillis()
 
@@ -98,9 +89,6 @@ class EditTaskActivity : AppCompatActivity() {
         isCalendarVisible = false
     }
 
-    // ============================================
-    //                TIME PICKER
-    // ============================================
     private fun setupTimePicker() {
         binding.timePicker.setIs24HourView(true)
 
@@ -138,9 +126,6 @@ class EditTaskActivity : AppCompatActivity() {
         isTimePickerVisible = false
     }
 
-    // ============================================
-    //                SAVE TASK
-    // ============================================
     private fun saveTask() {
         val title = binding.edtTitle.text.toString().trim()
         val desc = binding.edtDesc.text.toString().trim()
@@ -180,9 +165,6 @@ class EditTaskActivity : AppCompatActivity() {
         }
     }
 
-    // ============================================
-    //         KONVERSI WAKTU 12 JAM / 24 JAM
-    // ============================================
     private fun formatTime(time24: String): String {
         return try {
             val inFmt = SimpleDateFormat("HH:mm", Locale.getDefault())

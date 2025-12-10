@@ -6,7 +6,6 @@
     android:padding="24dp"
     android:background="@color/background">
 
-    <!-- Header dengan Back + Judul -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,7 +13,6 @@
         android:gravity="center_vertical"
         android:layout_marginBottom="24dp">
 
-        <!-- Tombol Back -->
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="36dp"
@@ -23,7 +21,6 @@
             android:background="@null"
             android:contentDescription="Back"/>
 
-        <!-- Judul Halaman -->
         <TextView
             android:layout_width="330dp"
             android:layout_height="wrap_content"
@@ -35,7 +32,6 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- Edit Nama -->
     <EditText
         android:id="@+id/etName"
         android:layout_width="match_parent"
@@ -46,7 +42,6 @@
         android:textSize="16sp"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Edit Email -->
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
@@ -57,7 +52,6 @@
         android:textSize="16sp"
         android:layout_marginBottom="24dp"/>
 
-    <!-- Tombol Simpan -->
     <Button
         android:id="@+id/btnSave"
         android:layout_width="match_parent"

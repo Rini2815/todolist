@@ -13,11 +13,9 @@ class AboutActivity : AppCompatActivity() {
         binding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Setup back button
         binding.btnBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        // Optional: Tambahkan animasi atau logic lainnya
     }
 }

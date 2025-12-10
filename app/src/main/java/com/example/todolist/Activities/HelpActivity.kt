@@ -13,10 +13,8 @@ class HelpActivity : AppCompatActivity() {
         binding = ActivityHelpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Hilangkan action bar
         supportActionBar?.hide()
 
-        // Tombol back
         binding.btnBack.setOnClickListener {
             finish()
         }

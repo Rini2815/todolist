@@ -23,18 +23,14 @@ class FavoriteFragment : Fragment() {
     ): View {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
 
-        // Ambil list favorit awal
         favAdapter = FavoriteAdapter(TaskRepository.getFavorites()) { task ->
-            // Saat tombol favorit di-klik → matikan favorit
             task.isFavorite = false
             TaskRepository.setFavorite(task.id, false)
 
-            // Refresh list setelah perubahan
             val newList = TaskRepository.getFavorites()
             favAdapter.updateData(newList)
         }
 
-        // Setup RecyclerView
         binding.rvFavorite.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = favAdapter

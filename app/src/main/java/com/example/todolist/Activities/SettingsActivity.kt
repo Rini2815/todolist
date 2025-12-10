@@ -22,27 +22,22 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun setupClickListeners() {
-        // Tombol Back
         findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        // Edit Profil
         findViewById<LinearLayout>(R.id.menuEditProfile).setOnClickListener {
             startActivity(Intent(this, EditProfileActivity::class.java))
         }
 
-        // Notifikasi
         findViewById<LinearLayout>(R.id.menuNotification).setOnClickListener {
             startActivity(Intent(this, NotificationSettingsActivity::class.java))
         }
 
-        // Privasi
         findViewById<LinearLayout>(R.id.menuPrivacy).setOnClickListener {
             startActivity(Intent(this, PrivacyActivity::class.java))
         }
 
-        // Share Aplikasi
         findViewById<LinearLayout>(R.id.menuShare).setOnClickListener {
             shareApp()
         }

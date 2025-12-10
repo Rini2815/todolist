@@ -17,7 +17,6 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Cek apakah sudah login
         checkLoginStatus()
 
         setupListeners()
@@ -29,31 +28,25 @@ class LoginActivity : AppCompatActivity() {
         val username = prefs.getString("logged_in_user", null)
 
         if (username != null) {
-            // Sudah login, langsung ke Home
+
             navigateToHome()
         }
     }
 
     private fun setupListeners() {
-        // Tombol login awalnya disabled
+
         binding.btnLogin.isEnabled = false
 
-        // Aktifkan tombol login hanya jika:
-        // 1. Checkbox dicentang
-        // 2. Username tidak kosong
-        // 3. Password tidak kosong
         binding.checkbox.setOnCheckedChangeListener { _, isChecked ->
             validateForm()
         }
 
-        // Tombol login
         binding.btnLogin.setOnClickListener {
             performLogin()
         }
 
-        // Link ke halaman lain (jika ada)
         binding.txtRegister.setOnClickListener {
-            // Jika mau ke Register activity
+
             startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
@@ -76,7 +69,6 @@ class LoginActivity : AppCompatActivity() {
         val password = binding.edtPassword.text.toString().trim()
         val isChecked = binding.checkbox.isChecked
 
-        // Enable button hanya jika semua kondisi terpenuhi
         binding.btnLogin.isEnabled = username.isNotEmpty()
                 && password.isNotEmpty()
                 && isChecked
@@ -103,15 +95,13 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
-        // Simpan data login
         val prefs = MyPreferenceManager(this)
         prefs.setUsername(username)
         prefs.putString("logged_in_user", username)
-        prefs.putString("user_password", password) // Opsional, untuk demo saja
+        prefs.putString("user_password", password)
 
         Toast.makeText(this, "Login berhasil! Selamat datang $username", Toast.LENGTH_SHORT).show()
 
-        // Navigate to Home
         navigateToHome()
     }
 

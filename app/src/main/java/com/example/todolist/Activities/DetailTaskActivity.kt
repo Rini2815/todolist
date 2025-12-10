@@ -37,9 +37,6 @@ class DetailTaskActivity : AppCompatActivity() {
         setupListeners()
     }
 
-    // ============================================================
-    // LOAD DATA
-    // ============================================================
     private fun loadTaskData() {
         taskId = intent.getStringExtra("taskId") ?: ""
 
@@ -61,9 +58,6 @@ class DetailTaskActivity : AppCompatActivity() {
         }
     }
 
-    // ============================================================
-    // LISTENERS
-    // ============================================================
     private fun setupListeners() {
         binding.btnBack.setOnClickListener {
             saveChanges()
@@ -77,9 +71,6 @@ class DetailTaskActivity : AppCompatActivity() {
         binding.btnCancelCard.setOnClickListener { clearInput() }
     }
 
-    // ============================================================
-    // ADD SUBTASK
-    // ============================================================
     private fun addSubTask() {
         val text = binding.inputCard.text.toString().trim()
 
@@ -105,9 +96,6 @@ class DetailTaskActivity : AppCompatActivity() {
         binding.inputCard.clearFocus()
     }
 
-    // ============================================================
-    // UPDATE SUBTASK LIST UI
-    // ============================================================
     private fun updateSubtaskList() {
         binding.listCard.removeAllViews()
 
@@ -149,9 +137,6 @@ class DetailTaskActivity : AppCompatActivity() {
         }
     }
 
-    // ============================================================
-    // DELETE DIALOG
-    // ============================================================
     private fun showDeleteDialog(index: Int, subtask: SubTask) {
         AlertDialog.Builder(this)
             .setTitle("Hapus Card")
@@ -168,9 +153,6 @@ class DetailTaskActivity : AppCompatActivity() {
             .show()
     }
 
-    // ============================================================
-    // MENU POPUP
-    // ============================================================
     private fun showPopupMenu(view: View) {
         val popup = PopupMenu(this, view)
         popup.menuInflater.inflate(R.menu.menu_detail_task, popup.menu)
@@ -192,9 +174,6 @@ class DetailTaskActivity : AppCompatActivity() {
         popup.show()
     }
 
-    // ============================================================
-    // EDIT TASK
-    // ============================================================
     private fun editTask() {
         currentTask?.let { task ->
             val intent = Intent(this, EditTaskActivity::class.java)
@@ -203,9 +182,6 @@ class DetailTaskActivity : AppCompatActivity() {
         }
     }
 
-    // ============================================================
-    // FAVORITE TOGGLE
-    // ============================================================
     private fun toggleFavorite() {
         currentTask?.let { task ->
             task.isFavorite = !task.isFavorite
@@ -220,9 +196,6 @@ class DetailTaskActivity : AppCompatActivity() {
         }
     }
 
-    // ============================================================
-    // SHARE
-    // ============================================================
     private fun shareTask() {
         currentTask?.let { task ->
             val shareText = buildString {
@@ -248,9 +221,6 @@ class DetailTaskActivity : AppCompatActivity() {
         }
     }
 
-    // ============================================================
-    // DELETE TASK
-    // ============================================================
     private fun deleteTask() {
         AlertDialog.Builder(this)
             .setTitle("Hapus Tugas")
@@ -266,9 +236,6 @@ class DetailTaskActivity : AppCompatActivity() {
             .show()
     }
 
-    // ============================================================
-    // SAVE CHANGES
-    // ============================================================
     private fun saveChanges() {
         currentTask?.let { TaskRepository.updateTask(it) }
     }

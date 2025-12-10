@@ -21,12 +21,10 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Tombol Register
         binding.btnRegister.setOnClickListener {
             finish()
         }
 
-        // Setup clickable text untuk "Login"
         setupClickableLoginText()
     }
 

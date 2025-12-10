@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/background">
 
-    <!-- Header -->
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="0dp"
@@ -56,7 +55,6 @@
             android:layout_marginTop="4dp"/>
     </LinearLayout>
 
-    <!-- Content -->
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"

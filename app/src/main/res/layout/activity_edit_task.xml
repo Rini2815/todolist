@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <!-- Header -->
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="40dp"
@@ -37,7 +36,6 @@
             app:layout_constraintBottom_toBottomOf="@id/btnBack"
             app:layout_constraintStart_toEndOf="@id/btnBack"/>
 
-        <!-- FORM CONTAINER -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -47,7 +45,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
-            <!-- Input Title -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -63,7 +60,6 @@
                     android:background="@android:color/transparent"/>
             </LinearLayout>
 
-            <!-- Input Description -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -83,7 +79,6 @@
                     android:background="@android:color/transparent"/>
             </LinearLayout>
 
-            <!-- Favorite Switch -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -115,7 +110,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Input Date -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -144,7 +138,6 @@
                     app:tint="@color/text_secondary"/>
             </LinearLayout>
 
-            <!-- Input Time -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -173,7 +166,6 @@
                     app:tint="@color/text_secondary"/>
             </LinearLayout>
 
-            <!-- Calendar Picker -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardCalendar"
                 android:layout_width="match_parent"
@@ -190,7 +182,6 @@
                     android:layout_height="wrap_content"/>
             </androidx.cardview.widget.CardView>
 
-            <!-- Time Picker -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardTimePicker"
                 android:layout_width="match_parent"
@@ -243,7 +234,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- UPDATE BUTTON -->
             <Button
                 android:id="@+id/btnUpdateTask"
                 android:layout_width="match_parent"

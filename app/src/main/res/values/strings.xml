@@ -1,31 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- App Name -->
+
     <string name="app_name">MyApp</string>
 
-    <!-- Navigation -->
     <string name="home">Home</string>
     <string name="profile">Profile</string>
     <string name="settings">Settings</string>
 
-    <!-- Settings -->
     <string name="theme">Theme</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="about_app">About App</string>
 
-    <!-- Edit Profile -->
     <string name="edit_profile">Edit Profile</string>
     <string name="save">Save</string>
 
-    <!-- Tambah Task -->
     <string name="add_task">Tambah Tugas</string>
 
-    <!-- Login / Register -->
     <string name="logo_desc">To-Do List Logo</string>
     <string name="daftar_akun">Daftar Akun</string>
 
-    <!-- Input -->
     <string name="icon_username">Username Icon</string>
     <string name="icon_password">Password Icon</string>
     <string name="hint_username">Username</string>
@@ -33,43 +27,35 @@
 
     <string name="back_button_desc">Tombol kembali</string>
 
-    <!-- Checkbox -->
     <string name="setuju_snk">Saya setuju dengan Syarat dan Ketentuan</string>
 
-    <!-- Button -->
     <string name="daftar">Daftar</string>
 
-    <!-- Link -->
+
     <string name="sudah_punya_akun">Sudah punya akun? Masuk disini</string>
 
-    <!-- About Activity -->
     <string name="back">Kembali</string>
     <string name="about_title">To-Do List</string>
     <string name="about_version">Version 1.0.0</string>
 
-    <!-- About - Tentang Aplikasi -->
     <string name="emoji_info">ℹ️</string>
     <string name="about_app_title">Tentang Aplikasi</string>
     <string name="about_app_desc">To-Do List adalah aplikasi manajemen tugas yang dirancang untuk membantu Anda mengatur aktivitas harian.</string>
 
-    <!-- About - Fitur Utama -->
     <string name="emoji_star">⭐</string>
     <string name="about_features_title">Fitur Utama</string>
     <string name="about_features_list">• Tambah &amp; kelola tugas\n• Tandai favorit\n• Notifikasi pengingat\n• Pantau progres\n• Data aman di perangkat</string>
 
-    <!-- About - Developer -->
     <string name="emoji_developer">👨‍💻</string>
     <string name="about_developer_title">Developer</string>
     <string name="about_developer_desc">Dibuat oleh mahasiswa Politeknik Negeri Madiun</string>
     <string name="about_developer_prodi">Program Studi: Teknologi Informasi</string>
 
-    <!-- About - Thank You -->
     <string name="emoji_heart">💙</string>
     <string name="about_thanks">Terima kasih telah menggunakan</string>
     <string name="about_app_name">To-Do List!</string>
     <string name="about_copyright">© 2025 To-Do List App</string>
 
-    <!-- Emojis -->
     <string name="emoji_note">📝</string>
 
 </resources>

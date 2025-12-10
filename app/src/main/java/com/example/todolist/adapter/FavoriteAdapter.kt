@@ -27,7 +27,6 @@ class FavoriteAdapter(
             tvTaskTitle.text = task.title
             tvTaskTime.text = task.time
 
-            // Tombol remove favorite
             btnUnfavorite.setOnClickListener {
                 onUnfavoriteClicked(task)
             }
@@ -36,7 +35,6 @@ class FavoriteAdapter(
 
     override fun getItemCount(): Int = favoriteList.size
 
-    // Untuk refresh data
     fun updateData(newList: MutableList<Task>) {
         favoriteList.clear()
         favoriteList.addAll(newList)

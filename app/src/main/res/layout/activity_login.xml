@@ -159,7 +159,7 @@
             android:id="@+id/txtRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sudah_punya_akun"
+            android:text="Belum punya akun?"
             android:textSize="14sp"
             android:textColor="@color/accent_blue"
             android:textStyle="bold"
